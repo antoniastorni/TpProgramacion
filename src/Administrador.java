@@ -29,13 +29,11 @@ public class Administrador extends Usuario{
     }
 
     public void transAdmin(Ciudadano c){
-        ABM abm = new ABM(c);
-        abm.transAdmin();
+
     }
 
     public void transCiud(Administrador c){
-        ABM abm = new ABM(c);
-        abm.transCiud();
+
     }
 
 
