@@ -28,18 +28,18 @@ public class Administrador extends Usuario{
         c.bloqueado = true;
     }
 
-    public void transAdmin(Ciudadano c){
-
-    }
-
-    public void transCiud(Administrador c){
-
-    }
-
-
     public void desblock(Ciudadano c){
         c.bloqueado = false;
     }
+
+    public Administrador transAdmin(Ciudadano c){
+        return new Administrador(c.getCUIL(),c.getTelefono(), c.getZona());
+    }
+
+    public Ciudadano transCiud(Administrador c){
+        return new Ciudadano(c.getCUIL(),c.getTelefono(), c.getZona());
+    }
+
 
     public void addEvent(String a){
         evento.add(a);
