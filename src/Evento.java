@@ -6,32 +6,32 @@ public class Evento {
     consistiendo simplemente de un nombre de evento
     y con 0 a N eventos relacionados.
     */
-    ArrayList<String> Sintoma;
+    ArrayList<String> sintoma;
 
     public Evento(){
-        this.Sintoma = new ArrayList<String>();
+        this.sintoma = new ArrayList<String>();
     }
 
     public void add(String a){
-        Sintoma.add(a);
+        sintoma.add(a);
     }
 
     public void remove(String a){
-        if(Sintoma.contains(a)){
-            Sintoma.remove(a);
+        if(sintoma.contains(a)){
+            sintoma.remove(a);
         }else{
             System.out.println("Sintoma No Encontrado");
         }
     }
 
     public void print(){
-        for (int i = 0; i < Sintoma.size(); i++){
-            System.out.println(i + " " + Sintoma.get(i));
+        for (int i = 0; i < sintoma.size(); i++){
+            System.out.println(i + " " + sintoma.get(i));
         }
     }
 
     public String get(Integer i){
-        return Sintoma.get(i);
+        return sintoma.get(i);
     }
 
 

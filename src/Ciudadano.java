@@ -4,12 +4,12 @@ public class Ciudadano extends Usuario {
     Integer telefono;
     String zona;
     boolean bloqueado;
-    ArrayList<String> Sintomas;
+    ArrayList<String> sintomas;
     boolean coronavirus = false;
 
     public Ciudadano(Integer CUIL, Integer telefono, String zona){
         super(CUIL, telefono, zona);
-        this.Sintomas = new ArrayList<String>();
+        this.sintomas = new ArrayList<String>();
     }
 
     public Integer getCUIL() {
@@ -29,16 +29,16 @@ public class Ciudadano extends Usuario {
     }
 
     public void elegir(Evento evento, Integer a){
-        Sintomas.add(evento.get(a));
+        sintomas.add(evento.get(a));
         covid();
     }
 
     public void size(){
-        System.out.println(Sintomas.size());
+        System.out.println(sintomas.size());
     }
 
     public void covid(){
-        if (Sintomas.size() >= 3){
+        if (sintomas.size() >= 3){
             coronavirus = true;
         }else{
             coronavirus = false;

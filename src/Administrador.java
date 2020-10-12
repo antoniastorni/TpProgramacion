@@ -44,8 +44,7 @@ public class Administrador extends Usuario{
         evento.add(a);
     }
 
-    public void remove(Evento evento, String a){
+    public void removeEvent(Evento evento, String a){
         evento.remove(a);
     }
-
 }
