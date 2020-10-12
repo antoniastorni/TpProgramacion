@@ -24,12 +24,12 @@ public class Ciudadano extends Usuario {
         return zona;
     }
 
-    public void sintomas(Administrador admin){
-        admin.print();
+    public void sintomas(Evento evento){
+        evento.print();
     }
 
-    public void elegir(Administrador admin, Integer a){
-        Sintomas.add(admin.get(a));
+    public void elegir(Evento evento, Integer a){
+        Sintomas.add(evento.get(a));
         covid();
     }
 

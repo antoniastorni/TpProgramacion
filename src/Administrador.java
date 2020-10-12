@@ -5,11 +5,10 @@ public class Administrador extends Usuario{
     Integer telefono;
     String zona;
     boolean bloqueado;
-    Evento evento;
+
 
     public Administrador(Integer CUIL, Integer telefono, String zona){
         super(CUIL, telefono, zona);
-        this.evento = new Evento();
     }
 
     public Integer getCUIL() {
@@ -41,18 +40,12 @@ public class Administrador extends Usuario{
     }
 
 
-    public void addEvent(String a){
+    public void addEvent(Evento evento, String a){
         evento.add(a);
     }
 
-    public void remove(String a){
+    public void remove(Evento evento, String a){
         evento.remove(a);
     }
 
-    public void print(){
-        evento.print();
-    }
-    public String get(int i){
-        return evento.get(i);
-    }
 }
