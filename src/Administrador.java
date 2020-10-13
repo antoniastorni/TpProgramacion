@@ -25,35 +25,44 @@ public class Administrador{
         return zona;
     }
 
-    public void bloquear(Ciudadano c){
+    public void bloquear(Ciudadano c){// bloquea a un ciudadano
         c.bloqueado = true;
     }
 
-    public void desblock(Ciudadano c){
+    public void desblock(Ciudadano c){// desbloquea a un ciudadano
         c.bloqueado = false;
     }
 
-    public Administrador transAdmin(Integer cuil, Ciudadanos a){
+    public Administrador transAdmin(Integer cuil, Ciudadanos a, Administradores c){// Transforma un ciudadano en administrador y lo elimina de la lista de ciudadanos
         Administrador b = null;
         for (Integer i = 0; i < a.size(); i++){
             if (cuil.equals((a.get(i).getCUIL()))){
                 b = new Administrador(a.get(i).getCUIL(),a.get(i).getTelefono(), a.get(i).getZona());
                 a.remove(a.get(i));
+                c.add(b);
             }
         }
         return b;
     }
 
-    public Ciudadano transCiud(Administrador c){
-        return new Ciudadano(c.getCUIL(),c.getTelefono(), c.getZona());
+    public Ciudadano transCiud(Integer cuil, Administradores a, Ciudadanos c){// transforma el Administrador en ciudadano
+        Ciudadano b = null;
+        for (Integer i = 0; i < a.size(); i++){
+            if (cuil.equals((a.get(i).getCUIL()))){
+                b = new Ciudadano(a.get(i).getCUIL(),a.get(i).getTelefono(), a.get(i).getZona());
+                a.remove(a.get(i));
+                c.add(b);
+            }
+        }
+        return b;
     }
 
 
-    public void addEvent(Evento evento, String a){
+    public void addEvent(Evento evento, String a){// Agrega un sintoma a los eventos
         evento.add(a);
     }
 
-    public void removeEvent(Evento evento, String a){
+    public void removeEvent(Evento evento, String a){// elimina un sintoma a los eventos
         evento.remove(a);
     }
 }

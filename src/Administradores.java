@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+//Lista de administradores
 public class Administradores {
 
     ArrayList<Administrador> administradores;

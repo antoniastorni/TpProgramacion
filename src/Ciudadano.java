@@ -26,20 +26,20 @@ public class Ciudadano {
         return zona;
     }
 
-    public void sintomas(Evento evento){
+    public void sintomas(Evento evento){//Printea la lista de sintomas
         evento.print();
     }
 
-    public void elegir(Evento evento, Integer a){
+    public void elegir(Evento evento, Integer a){//Agrega un sintoma de la lista de eventos a la de el Ciudadano
         sintomas.add(evento.get(a));
         covid();
     }
 
-    public void size(){
+    public void size(){//Muestra el tamaño de la lista de sintomas del Ciudadano
         System.out.println(sintomas.size());
     }
 
-    public void covid(){
+    public void covid(){// Si el size de la lista de cintomas del ciudadano es mayor o igual a 3, este tiene covid
         if (sintomas.size() >= 3){
             coronavirus = true;
         }else{

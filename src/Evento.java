@@ -1,11 +1,7 @@
 import java.util.ArrayList;
-
+//Lista de los sintomas de covid
 public class Evento {
-    /* Los administradores darán de alta distintos tipos de eventos
-    (en general utilizado para síntomas de enfermedades),
-    consistiendo simplemente de un nombre de evento
-    y con 0 a N eventos relacionados.
-    */
+
     ArrayList<String> sintoma;
 
     public Evento(){

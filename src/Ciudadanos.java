@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+//Lista de todos los ciudadanos
 public class Ciudadanos {
     ArrayList<Ciudadano> personas;
 
