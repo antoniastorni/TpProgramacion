@@ -1,14 +1,16 @@
 import java.util.ArrayList;
 
-public class Administrador extends Usuario{
-    Integer CUIL;
-    Integer telefono;
-    String zona;
+public class Administrador{
+    private Integer CUIL;
+    private Integer telefono;
+    private String zona;
     boolean bloqueado;
 
 
     public Administrador(Integer CUIL, Integer telefono, String zona){
-        super(CUIL, telefono, zona);
+        this.CUIL = CUIL;
+        this.telefono = telefono;
+        this.zona = zona;
     }
 
     public Integer getCUIL() {
@@ -31,8 +33,15 @@ public class Administrador extends Usuario{
         c.bloqueado = false;
     }
 
-    public Administrador transAdmin(Ciudadano c){
-        return new Administrador(c.getCUIL(),c.getTelefono(), c.getZona());
+    public Administrador transAdmin(Integer cuil, Ciudadanos a){
+        Administrador b = null;
+        for (Integer i = 0; i < a.size(); i++){
+            if (cuil.equals((a.get(i).getCUIL()))){
+                b = new Administrador(a.get(i).getCUIL(),a.get(i).getTelefono(), a.get(i).getZona());
+                a.remove(a.get(i));
+            }
+        }
+        return b;
     }
 
     public Ciudadano transCiud(Administrador c){

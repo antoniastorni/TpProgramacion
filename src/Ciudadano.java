@@ -1,14 +1,16 @@
 import java.util.ArrayList;
-public class Ciudadano extends Usuario {
-    Integer CUIL;
-    Integer telefono;
-    String zona;
+public class Ciudadano {
+    private Integer CUIL;
+    private Integer telefono;
+    private String zona;
     boolean bloqueado;
     ArrayList<String> sintomas;
     boolean coronavirus = false;
 
     public Ciudadano(Integer CUIL, Integer telefono, String zona){
-        super(CUIL, telefono, zona);
+        this.CUIL = CUIL;
+        this.telefono = telefono;
+        this.zona = zona;
         this.sintomas = new ArrayList<String>();
     }
 
@@ -44,6 +46,4 @@ public class Ciudadano extends Usuario {
             coronavirus = false;
         }
     }
-
-
 }

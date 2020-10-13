@@ -3,16 +3,26 @@ public class Tester {
         Administrador admin1 = new Administrador(123,1234, "");
         Administrador admin2 = new Administrador(321,4321,"");
         Ciudadano ciud = new Ciudadano(345,3456, "");
+        Ciudadano ciud2 = new Ciudadano(876,8765,"chaco");
+        Ciudadanos gente = new Ciudadanos();
+        gente.add(ciud);
+        gente.add(ciud2);
+        System.out.println(ciud.getCUIL());
+        System.out.println(gente.size());
+        Administrador nuevo = admin1.transAdmin(876, gente);
+        System.out.println(gente.size());
         Evento evento = new Evento();
         admin1.addEvent(evento, "fiebre");
         admin1.addEvent(evento, "gripe");
         admin2.addEvent(evento, "dolor de cabeza");
+        nuevo.addEvent(evento, "dolor de culo");
         ciud.sintomas(evento);
         ciud.sintomas(evento);
         ciud.elegir(evento, 0);
+        ciud.elegir(evento, 1);
+        ciud.elegir(evento, 2);
         ciud.size();
-        admin1.bloquear(ciud);
-        if (ciud.bloqueado){
+        if (ciud.coronavirus){
             System.out.println("hola");
         }
 
