@@ -20,7 +20,6 @@ public class Tester {
         admin2.addEvent(evento, "dolor de cabeza");
         nuevo.addEvent(evento, "dolor de panza");
         ciud.sintomas(evento);
-        ciud.sintomas(evento);
         ciud.elegir(evento, 0);
         ciud.elegir(evento, 1);
         ciud.elegir(evento, 2);
