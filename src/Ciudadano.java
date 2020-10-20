@@ -5,14 +5,26 @@ public class Ciudadano {
     private String zona;
     boolean bloqueado;
     ArrayList<String> sintomas;
-    boolean coronavirus = false;
+    boolean coronavirus;
     ArrayList<Integer> pendientes;
 
     public Ciudadano(Integer CUIL, Integer telefono, String zona){
         this.CUIL = CUIL;
         this.telefono = telefono;
         this.zona = zona;
+        this.bloqueado = false;
         this.sintomas = new ArrayList<String>();
+        this.coronavirus = false;
+        this.pendientes = new ArrayList<Integer>();
+    }
+
+    public Ciudadano(Integer CUIL, Integer telefono, String zona, boolean bloqueado, boolean coronavirus){
+        this.CUIL = CUIL;
+        this.telefono = telefono;
+        this.zona = zona;
+        this.bloqueado = bloqueado;
+        this.sintomas = new ArrayList<String>();
+        this.coronavirus = coronavirus;
         this.pendientes = new ArrayList<Integer>();
     }
 

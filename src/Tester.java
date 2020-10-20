@@ -1,4 +1,4 @@
-public class Tester {
+public class Tester {// tester para
     public static void main(String[] args) {
         Administrador admin1 = new Administrador(123,1234, "");
         Administrador admin2 = new Administrador(321,4321,"");
@@ -12,8 +12,10 @@ public class Tester {
         gente.add(ciud2);
         System.out.println(ciud.getCUIL());
         System.out.println(gente.size());
+        System.out.println(admins.size());
         Administrador nuevo = admin1.transAdmin(876, gente, admins);
         System.out.println(gente.size());
+        System.out.println(admins.size());
         Evento evento = new Evento();
         admin1.addEvent(evento, "fiebre");
         admin1.addEvent(evento, "gripe");
@@ -27,6 +29,7 @@ public class Tester {
         if (ciud.coronavirus){
             System.out.println("hola");
         }
+
 
     }
 }

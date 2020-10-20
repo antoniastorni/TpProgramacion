@@ -4,7 +4,6 @@ public class Administrador{
     private Integer CUIL;
     private Integer telefono;
     private String zona;
-    boolean bloqueado;
 
 
     public Administrador(Integer CUIL, Integer telefono, String zona){

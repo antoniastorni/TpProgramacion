@@ -14,7 +14,5 @@ public class Archivios {
         }catch (IOException e){
             System.out.println(e.getMessage());
         }
-
-        System.out.println((ciudadanos.get(0)).getCUIL());
     }
 }

@@ -9,7 +9,11 @@ public class Evento {
     }
 
     public void add(String a){
-        sintoma.add(a);
+        if(sintoma.contains(a)){
+            System.out.println("Este sintoma ya existe");
+        }else{
+            sintoma.add(a);
+        }
     }
 
     public void remove(String a){
@@ -28,6 +32,10 @@ public class Evento {
 
     public String get(Integer i){
         return sintoma.get(i);
+    }
+
+    public Integer size(){
+        return sintoma.size();
     }
 
 
