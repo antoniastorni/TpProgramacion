@@ -1,9 +1,9 @@
 public class Tester {// tester para
     public static void main(String[] args) {
-        Administrador admin1 = new Administrador(123,1234, "");
-        Administrador admin2 = new Administrador(321,4321,"");
-        Ciudadano ciud = new Ciudadano(345,3456, "");
-        Ciudadano ciud2 = new Ciudadano(876,8765,"chaco");
+        Administrador admin1 = new Administrador((double)123,(double)1234, "");
+        Administrador admin2 = new Administrador((double)321,(double)4321,"");
+        Ciudadano ciud = new Ciudadano((double)345,(double)3456, "");
+        Ciudadano ciud2 = new Ciudadano((double)876,(double)8765,"chaco");
         Ciudadanos gente = new Ciudadanos();
         Administradores admins = new Administradores();
         admins.add(admin1);
@@ -13,7 +13,7 @@ public class Tester {// tester para
         System.out.println(ciud.getCUIL());
         System.out.println(gente.size());
         System.out.println(admins.size());
-        Administrador nuevo = admin1.transAdmin(876, gente, admins);
+        Administrador nuevo = admin1.transAdmin((double)876, gente, admins);
         System.out.println(gente.size());
         System.out.println(admins.size());
         Evento evento = new Evento();

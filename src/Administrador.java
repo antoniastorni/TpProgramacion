@@ -1,22 +1,22 @@
 import java.util.ArrayList;
 
 public class Administrador{
-    private Integer CUIL;
-    private Integer telefono;
+    private Double CUIL;
+    private Double telefono;
     private String zona;
 
 
-    public Administrador(Integer CUIL, Integer telefono, String zona){
+    public Administrador(Double CUIL, Double telefono, String zona){
         this.CUIL = CUIL;
         this.telefono = telefono;
         this.zona = zona;
     }
 
-    public Integer getCUIL() {
+    public Double getCUIL() {
         return CUIL;
     }
 
-    public Integer getTelefono() {
+    public Double getTelefono() {
         return telefono;
     }
 
@@ -24,23 +24,23 @@ public class Administrador{
         return zona;
     }
 
-    public void bloquear(Integer cuil, Ciudadanos a){// bloquea a un ciudadano
+    public void bloquear(Double cuil, Ciudadanos a){// bloquea a un ciudadano
         for (Integer i = 0; i < a.size(); i++){
             if (cuil.equals((a.get(i).getCUIL()))){
-                a.get(i).bloqueado = true;
+                a.get(i).bloqueado = 5;
             }
         }
     }
 
-    public void desblock(Integer cuil, Ciudadanos a){// desbloquea a un ciudadano
+    public void desblock(Double cuil, Ciudadanos a){// desbloquea a un ciudadano
         for (Integer i = 0; i < a.size(); i++){
             if (cuil.equals((a.get(i).getCUIL()))){
-                a.get(i).bloqueado = true;
+                a.get(i).bloqueado = 0;
             }
         }
     }
 
-    public Administrador transAdmin(Integer cuil, Ciudadanos a, Administradores c){// Transforma un ciudadano en administrador y lo elimina de la lista de ciudadanos
+    public Administrador transAdmin(Double cuil, Ciudadanos a, Administradores c){// Transforma un ciudadano en administrador y lo elimina de la lista de ciudadanos
         Administrador b = null;
         for (Integer i = 0; i < a.size(); i++){
             if (cuil.equals((a.get(i).getCUIL()))){
@@ -52,7 +52,7 @@ public class Administrador{
         return b;
     }
 
-    public Ciudadano transCiud(Integer cuil, Administradores a, Ciudadanos c){// transforma el Administrador en ciudadano
+    public Ciudadano transCiud(Double cuil, Administradores a, Ciudadanos c){// transforma el Administrador en ciudadano
         Ciudadano b = null;
         for (Integer i = 0; i < a.size(); i++){
             if (cuil.equals((a.get(i).getCUIL()))){

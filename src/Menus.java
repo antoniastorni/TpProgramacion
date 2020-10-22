@@ -34,11 +34,11 @@ public class Menus {
             int b = Scanner.getInt("Seleccione el numero de su respuesta: ");
             switch (b){
                 case 1:
-                    Integer cuil1 = Scanner.getInt("Ingrese el cuil de el ciudadano: ");
+                    Double cuil1 = Scanner.getDouble("Ingrese el cuil de el ciudadano: ");
                     a.transAdmin(cuil1, ciudadanos, administradores);
                     break;
                 case 2:
-                    Integer cuil2 = Scanner.getInt("Ingrese el cuil de el administrador: ");
+                    Double cuil2 = Scanner.getDouble("Ingrese el cuil de el administrador: ");
                     a.transCiud(cuil2, administradores, ciudadanos);
                     break;
                 case 3:

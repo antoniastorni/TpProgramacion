@@ -1,43 +1,51 @@
 import java.util.ArrayList;
 public class Ciudadano {
-    private Integer CUIL;
-    private Integer telefono;
+    private Double CUIL;
+    private Double telefono;
     private String zona;
-    boolean bloqueado;
+    Integer bloqueado;
     ArrayList<String> sintomas;
-    boolean coronavirus;
-    ArrayList<Integer> pendientes;
+    Boolean coronavirus;
+    ArrayList<Double> pendientes;
 
-    public Ciudadano(Integer CUIL, Integer telefono, String zona){
+    public Ciudadano(Double CUIL, Double telefono, String zona){
         this.CUIL = CUIL;
         this.telefono = telefono;
         this.zona = zona;
-        this.bloqueado = false;
+        this.bloqueado = 0;
         this.sintomas = new ArrayList<String>();
         this.coronavirus = false;
-        this.pendientes = new ArrayList<Integer>();
+        this.pendientes = new ArrayList<Double>();
     }
 
-    public Ciudadano(Integer CUIL, Integer telefono, String zona, boolean bloqueado, boolean coronavirus){
+    public Ciudadano(Double CUIL, Double telefono, String zona, Integer bloqueado, Boolean coronavirus){
         this.CUIL = CUIL;
         this.telefono = telefono;
         this.zona = zona;
         this.bloqueado = bloqueado;
         this.sintomas = new ArrayList<String>();
         this.coronavirus = coronavirus;
-        this.pendientes = new ArrayList<Integer>();
+        this.pendientes = new ArrayList<Double>();
     }
 
-    public Integer getCUIL() {
+    public Double getCUIL() {
         return CUIL;
     }
 
-    public Integer getTelefono() {
+    public Double getTelefono() {
         return telefono;
     }
 
     public String getZona() {
         return zona;
+    }
+
+    public Integer getBloqueado(){
+        return bloqueado;
+    }
+
+    public Boolean getCoronavirus(){
+        return coronavirus;
     }
 
     public void sintomas(Evento evento){//Printea la lista de sintomas
@@ -62,7 +70,7 @@ public class Ciudadano {
     }
 
     public void juntada(Ciudadanos gente){
-        Integer b = Scanner.getInt("Ingrese el cuil de la persona con la que se junto: ");
+        Double b = Scanner.getDouble("Ingrese el cuil de la persona con la que se junto: ");
         for (Integer i = 0; i < gente.size(); i++){
             if (b.equals(gente.get(i).getCUIL())){
                 gente.get(i).pendientes.add(CUIL);
@@ -72,11 +80,11 @@ public class Ciudadano {
         System.out.println("No se encontro el ciudadano");
     }
 
-    public boolean confirm(Integer cuil, Ciudadanos gente){
+    public boolean confirm(Double cuil, Ciudadanos gente){
         boolean a = false;
         for (Integer i = 0; i < gente.size(); i++){
             if (cuil.equals(gente.get(i).getCUIL())){
-                Integer  estecuil = gente.get(i).getCUIL();
+                Double estecuil = gente.get(i).getCUIL();
                 while(true){
                     System.out.println("Usted se junto con el ciudadano con cuil " + estecuil + "\n 1 SI\n 2 NO");
                     int b = Scanner.getInt("Seleccione el numero de su respuesta: ");
