@@ -6,7 +6,8 @@ public class Ciudadano {
     Integer bloqueado;
     ArrayList<String> sintomas;
     Boolean coronavirus;
-    ArrayList<Double> pendientes;
+    ArrayList<Juntada> pendientes;
+    ArrayList<Juntada> juntadas;
 
     public Ciudadano(Double CUIL, Double telefono, String zona){
         this.CUIL = CUIL;
@@ -15,7 +16,8 @@ public class Ciudadano {
         this.bloqueado = 0;
         this.sintomas = new ArrayList<String>();
         this.coronavirus = false;
-        this.pendientes = new ArrayList<Double>();
+        this.pendientes = new ArrayList<Juntada>();
+        this.juntadas = new ArrayList<Juntada>();
     }
 
     public Ciudadano(Double CUIL, Double telefono, String zona, Integer bloqueado, Boolean coronavirus){
@@ -25,7 +27,8 @@ public class Ciudadano {
         this.bloqueado = bloqueado;
         this.sintomas = new ArrayList<String>();
         this.coronavirus = coronavirus;
-        this.pendientes = new ArrayList<Double>();
+        this.pendientes = new ArrayList<Juntada>();
+        this.juntadas = new ArrayList<Juntada>();
     }
 
     public Double getCUIL() {
@@ -48,11 +51,7 @@ public class Ciudadano {
         return coronavirus;
     }
 
-    public void sintomas(Evento evento){//Printea la lista de sintomas
-        evento.print();
-    }
-
-    public void elegir(Evento evento, Integer a){//Agrega un sintoma de la lista de eventos a la de el Ciudadano
+    public void agregar(Evento evento, Integer a){//Agrega un sintoma de la lista de eventos a la de el Ciudadano
         sintomas.add(evento.get(a));
         covid();
     }
@@ -69,41 +68,19 @@ public class Ciudadano {
         }
     }
 
-    public void juntada(Ciudadanos gente){
-        Double b = Scanner.getDouble("Ingrese el cuil de la persona con la que se junto: ");
-        for (Integer i = 0; i < gente.size(); i++){
-            if (b.equals(gente.get(i).getCUIL())){
-                gente.get(i).pendientes.add(CUIL);
+    public void juntada(Ciudadanos gente, String diaDesde, String diaHasta, Double Telefono){
+        for (int i = 0; i < gente.size(); i++) {
+            if (Telefono.equals(gente.get(i).getTelefono())){
+                gente.get(i).pendientes.add(new Juntada(Telefono, diaDesde, diaHasta));
+                System.out.println("Solicitud penndiente");
                 return;
             }
         }
-        System.out.println("No se encontro el ciudadano");
     }
 
-    public boolean confirm(Double cuil, Ciudadanos gente){
-        boolean a = false;
-        for (Integer i = 0; i < gente.size(); i++){
-            if (cuil.equals(gente.get(i).getCUIL())){
-                Double estecuil = gente.get(i).getCUIL();
-                while(true){
-                    System.out.println("Usted se junto con el ciudadano con cuil " + estecuil + "\n 1 SI\n 2 NO");
-                    int b = Scanner.getInt("Seleccione el numero de su respuesta: ");
-                    switch (b) {
-                        case 1:
-                            a = true;
-                            System.exit(0);
-                            break;
-                        case 2:
-                            a = false;
-                            System.exit(0);
-                            break;
-                        default:
-                            System.out.println("Ingrese un valor existente");
-                            break;
-                    }
-                }
-            }
+    public void printSintomas(){
+        for (int i = 0; i < sintomas.size(); i++){
+            System.out.println(i + " " + sintomas.get(i));
         }
-        return a;
     }
 }

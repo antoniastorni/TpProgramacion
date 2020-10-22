@@ -21,14 +21,15 @@ public class Tester {// tester para
         admin1.addEvent(evento, "gripe");
         admin2.addEvent(evento, "dolor de cabeza");
         nuevo.addEvent(evento, "dolor de panza");
-        ciud.sintomas(evento);
-        ciud.elegir(evento, 0);
-        ciud.elegir(evento, 1);
-        ciud.elegir(evento, 2);
+        ciud.agregar(evento, 0);
+        ciud.agregar(evento, 1);
+        ciud.agregar(evento, 2);
         ciud.size();
         if (ciud.coronavirus){
             System.out.println("hola");
         }
+        evento.print();
+        ciud.printSintomas();
 
 
     }

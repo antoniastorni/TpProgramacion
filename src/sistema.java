@@ -1,7 +1,3 @@
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-
 public class sistema {
     public static void main(String[] args) {
         Ciudadanos ciudadanos = new Ciudadanos();

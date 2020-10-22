@@ -6,12 +6,14 @@ public class FileManagement {
         String line;
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\Usuario\\IdeaProjects\\TpProgramacion\\src\\Anses\\ciudadanos.txt"));){
             while ((line = bufferedReader.readLine()) != null) {
-                String[] administrador = line.split(",");
+                String[] administrador = line.split(", ");
                 ciudadanos.add(new Ciudadano((Double.parseDouble(administrador[0])),(Double.parseDouble(administrador[1])),(administrador[2]), (Integer.parseInt(administrador[3])), Boolean.parseBoolean(administrador[4])));
             }
         }catch (IOException e){
             System.out.println(e.getMessage());
         }
+
+
     }
 
     public static void generateAdministradores(Administradores administradores){
@@ -44,12 +46,13 @@ public class FileManagement {
         //escribe en el archivo de arrayList de ciudadanos los nuevos cambios
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Usuario\\IdeaProjects\\TpProgramacion\\src\\Anses\\ciudadanos.txt"))) {
             for (int i = 0; i < ciudadanos.size(); i++) {
-                bufferedWriter.write((ciudadanos.get(i).getCUIL()).toString() + ", " + (ciudadanos.get(i).getTelefono()).toString() + ", " + (ciudadanos.get(i).getZona()) + ", " + (ciudadanos.get(i).getBloqueado()).toString() + ", " + (ciudadanos.get(i).getBloqueado()).toString());
+                bufferedWriter.write((ciudadanos.get(i).getCUIL()).toString() + ", " + (ciudadanos.get(i).getTelefono()).toString() + ", " + (ciudadanos.get(i).getZona()) + ", " + (ciudadanos.get(i).getBloqueado()).toString() + ", " + (ciudadanos.get(i).getCoronavirus()).toString());
                 bufferedWriter.newLine();
             }
         }catch(IOException e){
             System.out.println(e.getMessage());
         }
+
     }
 
     public static void writeEventos(Evento eventos){

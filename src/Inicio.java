@@ -1,7 +1,7 @@
 public class Inicio {
     public static void menuInicial(Ciudadanos ciudadanos, Administradores administradores, Evento eventos){
         while(true){
-            System.out.println("1 Iniciar secion\n2 Crear cuenta");
+            System.out.println("1 Iniciar sesion\n2 Crear cuenta");
             int b = Scanner.getInt("Seleccione el numero de su respuesta: ");
             switch (b) {
                 case 1:
