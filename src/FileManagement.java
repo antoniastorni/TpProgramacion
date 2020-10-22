@@ -52,18 +52,6 @@ public class FileManagement {
         }
     }
 
-    public static void writeAdministradores(Administradores administradores){
-        //escribe en el archivo de arrayList de administradores los nuevos cambios
-        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Usuario\\IdeaProjects\\TpProgramacion\\src\\Anses\\administradores.txt"))) {
-            for (int i = 0; i < administradores.size(); i++) {
-                bufferedWriter.write((administradores.get(i).getCUIL()).toString() + ", " + (administradores.get(i).getTelefono()).toString() + ", " + (administradores.get(i).getZona()));
-                bufferedWriter.newLine();
-            }
-        }catch(IOException e){
-            System.out.println(e.getMessage());
-        }
-    }
-
     public static void writeEventos(Evento eventos){
         //escrive en el archivo de arrayList de eventos los nuevos cambios
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Usuario\\IdeaProjects\\TpProgramacion\\src\\Anses\\eventos.txt"))) {

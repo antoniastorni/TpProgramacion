@@ -1,6 +1,7 @@
 public class Menus {
     public static void menuCiudadanos(Ciudadano a, Ciudadanos ciudadanos,Evento eventos){
         //Inicia el menu de ciudadanos con sus opciones
+
         while(true){
             System.out.println("1 trans2formar ciudadano en administrador\n2 transformar administrador en ciudadano\n3 Agregar evento\n4 Remover evento\n5 Salir");
             int b = Scanner.getInt("Seleccione el numero de su respuesta: ");
@@ -19,6 +20,7 @@ public class Menus {
                     break;
 
                 case 5:
+                    FileManagement.writeCiudadanos(ciudadanos);
                     System.exit(0);
                 default:
                     System.out.println("Ingrese un valor existente");
@@ -51,6 +53,7 @@ public class Menus {
                     break;
                 case 5:
                     FileManagement.writeEventos(eventos);
+                    FileManagement.writeCiudadanos(ciudadanos);
                     System.exit(0);
                 default:
                     System.out.println("Ingrese un valor existente");
