@@ -1,3 +1,6 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 public class Ciudadano {
     private Double CUIL;
@@ -6,8 +9,6 @@ public class Ciudadano {
     Integer bloqueado;
     ArrayList<String> sintomas;
     Boolean coronavirus;
-    ArrayList<Juntada> pendientes;
-    ArrayList<Juntada> juntadas;
 
     public Ciudadano(Double CUIL, Double telefono, String zona){
         this.CUIL = CUIL;
@@ -16,8 +17,6 @@ public class Ciudadano {
         this.bloqueado = 0;
         this.sintomas = new ArrayList<String>();
         this.coronavirus = false;
-        this.pendientes = new ArrayList<Juntada>();
-        this.juntadas = new ArrayList<Juntada>();
     }
 
     public Ciudadano(Double CUIL, Double telefono, String zona, Integer bloqueado, Boolean coronavirus){
@@ -27,8 +26,6 @@ public class Ciudadano {
         this.bloqueado = bloqueado;
         this.sintomas = new ArrayList<String>();
         this.coronavirus = coronavirus;
-        this.pendientes = new ArrayList<Juntada>();
-        this.juntadas = new ArrayList<Juntada>();
     }
 
     public Double getCUIL() {
@@ -61,8 +58,9 @@ public class Ciudadano {
     }
 
     public void covid(){// Si el size de la lista de cintomas del ciudadano es mayor o igual a 3, este tiene covid
-        if (sintomas.size() >= 3){
+        if (sintomas.size() >= 2){
             coronavirus = true;
+            System.out.println("Usted tiene coronavirus");
         }else{
             coronavirus = false;
         }
@@ -71,11 +69,18 @@ public class Ciudadano {
     public void juntada(Ciudadanos gente, String diaDesde, String diaHasta, Double Telefono){
         for (int i = 0; i < gente.size(); i++) {
             if (Telefono.equals(gente.get(i).getTelefono())){
-                gente.get(i).pendientes.add(new Juntada(Telefono, diaDesde, diaHasta));
-                System.out.println("Solicitud penndiente");
+                Boolean confirmado = false;
+                Boolean visto = false;
+                try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Usuario\\IdeaProjects\\TpProgramacion\\src\\Anses\\JuntadasConfirm.txt"))) {
+                    bufferedWriter.write(CUIL.toString() + "," + Telefono.toString() + "," + diaDesde + "," + diaHasta + "," + confirmado.toString() + "," + visto.toString());
+                    bufferedWriter.newLine();
+                }catch(IOException e){
+                    System.out.println(e.getMessage());
+                }
                 return;
             }
         }
+        System.out.println("Usuario no encontrado");
     }
 
     public void printSintomas(){

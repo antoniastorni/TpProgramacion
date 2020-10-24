@@ -1,27 +1,13 @@
 public class Menus {
-    public static void menuCiudadanos(Ciudadano a, Ciudadanos ciudadanos,Evento eventos){
+    public static void menuCiudadanos(Ciudadano a, Ciudadanos ciudadanos,Evento eventos, Juntadas juntadas){
         //Inicia el menu de ciudadanos con sus opciones
-        for (int i = 0; i < a.pendientes.size(); i++) {
-            System.out.println("Usted se a juntado con " + a.pendientes.get(i).getTelefono() + " a partir del " + a.pendientes.get(i).fechaDesde + " Hasta " + a.pendientes.get(i).fechaDesde + "?");
-            System.out.println("1 Si\n2 No");
-            Integer e = Scanner.getInt("Seleccione su respuesta");
-            switch (e){
-                case 1:
-                    a.juntadas.add(a.pendientes.get(i));
-                    a.pendientes.remove(i);
-                    break;
-                case 2:
-                    for (int j = 0; j < ciudadanos.size(); j++) {
-                        if (a.pendientes.get(i).getTelefono().equals(ciudadanos.get(j).getTelefono())){
-                            ciudadanos.get(j).bloqueado += 1;
-                            a.juntadas.remove(i);
-                        }
-                    }
-                default:
-                    System.out.println("Ingrese un valor existente");
-                    break;
-            }
+        if (a.bloqueado >= 5){
+            System.out.println("Usted esta bloqueado");
+            return;
         }
+
+        Social.solicitudes(a, juntadas, ciudadanos);
+
 
         while(true){
             System.out.println("1 Reportar sintomas\n2 Remover sintoma\n3 Reportar juntada\n4 Salir");
@@ -38,12 +24,14 @@ public class Menus {
                     a.sintomas.remove(remove);
                     break;
                 case 3:
-                    Double Telefono = Scanner.getDouble("Ingrese el Telefono de la persona con la que se junto");
+                    Double Telefono = Scanner.getDouble("Ingrese el Telefono de la persona con la que se junto: ");
                     String diaDesde = Scanner.getString("desde que fecha? (Ingrese Dia/Mes/Año): ");
                     String diaHasta = Scanner.getString("Hasta que fecha? (Ingrese Dia/Mes/Año): ");
                     a.juntada(ciudadanos, diaDesde, diaHasta, Telefono);
+                    FileManagement.generateJuntadas(juntadas);
                     break;
                 case 4:
+                    FileManagement.writeJuntadas(juntadas);
                     FileManagement.writeCiudadanos(ciudadanos);
                     System.exit(0);
                 default:
@@ -78,6 +66,7 @@ public class Menus {
                 case 5:
                     FileManagement.writeEventos(eventos);
                     FileManagement.writeCiudadanos(ciudadanos);
+                    FileManagement.writeAdministrador(administradores);
                     System.exit(0);
                 default:
                     System.out.println("Ingrese un valor existente");

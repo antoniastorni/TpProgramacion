@@ -1,36 +1,43 @@
 public class Juntada {
 
+    Double MiTelefono;
     Double Telefono;
     String fechaDesde;
     String fechaHasta;
+    Boolean confirmado;
+    Boolean visto;
 
-    public Juntada (Double Telefono, String fechaDesde, String fechaHasta){
+    public Juntada (Double MiTelefono, Double Telefono, String fechaDesde, String fechaHasta, Boolean confirmado, Boolean visto){
+        this.MiTelefono = MiTelefono;
         this.Telefono = Telefono;
         this.fechaDesde = fechaDesde;
         this.fechaHasta = fechaHasta;
+        this.confirmado = confirmado;
+        this.visto = visto;
+
+    }
+
+    public Double getMiTelefono() {
+        return MiTelefono;
+    }
+
+    public String getFechaDesde() {
+        return fechaDesde;
+    }
+
+    public String getFechaHasta() {
+        return fechaHasta;
     }
 
     public Double getTelefono() {
         return Telefono;
     }
 
-    public Integer getDiaDesde() {
-        String[] fecha = fechaDesde.split("/");
-        return Integer.parseInt(fecha[0]);
+    public Boolean getConfirmado() {
+        return confirmado;
     }
 
-    public Integer getMesDesde() {
-        String[] fecha = fechaDesde.split("/");
-        return Integer.parseInt(fecha[1]);
-    }
-
-    public Integer getDiaHasta() {
-        String[] fecha = fechaHasta.split("/");
-        return Integer.parseInt(fecha[0]);
-    }
-
-    public Integer getMesHasta() {
-        String[] fecha = fechaHasta.split("/");
-        return Integer.parseInt(fecha[1]);
+    public Boolean getVisto() {
+        return visto;
     }
 }

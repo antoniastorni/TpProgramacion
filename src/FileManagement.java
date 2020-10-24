@@ -6,14 +6,12 @@ public class FileManagement {
         String line;
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\Usuario\\IdeaProjects\\TpProgramacion\\src\\Anses\\ciudadanos.txt"));){
             while ((line = bufferedReader.readLine()) != null) {
-                String[] administrador = line.split(", ");
-                ciudadanos.add(new Ciudadano((Double.parseDouble(administrador[0])),(Double.parseDouble(administrador[1])),(administrador[2]), (Integer.parseInt(administrador[3])), Boolean.parseBoolean(administrador[4])));
+                String[] gente = line.split(",");
+                ciudadanos.add(new Ciudadano((Double.parseDouble(gente[0])),(Double.parseDouble(gente[1])),(gente[2]), (Integer.parseInt(gente[3])), Boolean.parseBoolean(gente[4])));
             }
         }catch (IOException e){
             System.out.println(e.getMessage());
         }
-
-
     }
 
     public static void generateAdministradores(Administradores administradores){
@@ -42,17 +40,36 @@ public class FileManagement {
         }
     }
 
+    public static void generateJuntadas(Juntadas juntadas){
+        //genera el arrayList de ciudadanos a partir de los archivos
+        String line;
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\Usuario\\IdeaProjects\\TpProgramacion\\src\\Anses\\JuntadasConfirm.txt"));){
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] juntada = line.split(",");
+                juntadas.add(new Juntada((Double.parseDouble(juntada[0])),(Double.parseDouble(juntada[1])),(juntada[2]), (juntada[3]), (Boolean.parseBoolean(juntada[4])), (Boolean.parseBoolean(juntada[5]))));
+            }
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
     public static void writeCiudadanos(Ciudadanos ciudadanos){
         //escribe en el archivo de arrayList de ciudadanos los nuevos cambios
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Usuario\\IdeaProjects\\TpProgramacion\\src\\Anses\\ciudadanos.txt"))) {
             for (int i = 0; i < ciudadanos.size(); i++) {
-                bufferedWriter.write((ciudadanos.get(i).getCUIL()).toString() + ", " + (ciudadanos.get(i).getTelefono()).toString() + ", " + (ciudadanos.get(i).getZona()) + ", " + (ciudadanos.get(i).getBloqueado()).toString() + ", " + (ciudadanos.get(i).getCoronavirus()).toString());
+                bufferedWriter.write((ciudadanos.get(i).getCUIL()).toString() + "," + (ciudadanos.get(i).getTelefono()).toString() + "," + (ciudadanos.get(i).getZona()) + "," + (ciudadanos.get(i).getBloqueado()).toString() + "," + (ciudadanos.get(i).getCoronavirus()).toString() + ",");
+                for (int j = 0; j < ciudadanos.get(i).sintomas.size(); j++) {
+                    if (ciudadanos.get(i).sintomas.size() - 1 == j){
+                        bufferedWriter.write(ciudadanos.get(i).sintomas.get(j));
+                    }else{
+                        bufferedWriter.write(ciudadanos.get(i).sintomas.get(j) + "/");
+                    }
+                }
                 bufferedWriter.newLine();
             }
         }catch(IOException e){
             System.out.println(e.getMessage());
         }
-
     }
 
     public static void writeEventos(Evento eventos){
@@ -65,5 +82,38 @@ public class FileManagement {
         }catch(IOException e){
             System.out.println(e.getMessage());
         }
+    }
+
+    public static void writeAdministrador(Administradores administradores){
+        //escribe en el archivo de arrayList de ciudadanos los nuevos cambios
+        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Usuario\\IdeaProjects\\TpProgramacion\\src\\Anses\\administradores.txt"))) {
+            for (int i = 0; i < administradores.size(); i++) {
+                bufferedWriter.write((administradores.get(i).getCUIL()).toString() + "," + (administradores.get(i).getTelefono()).toString() + "," + (administradores.get(i).getZona()));
+                bufferedWriter.newLine();
+            }
+        }catch(IOException e){
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    public static void writeJuntadas(Juntadas juntadas){
+        //escribe en el archivo de arrayList de ciudadanos los nuevos cambios
+        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Usuario\\IdeaProjects\\TpProgramacion\\src\\Anses\\JuntadasConfirm.txt"))) {
+            for (int i = 0; i < juntadas.size(); i++) {
+                if (juntadas.get(i).getVisto().equals(false) && juntadas.get(i).getConfirmado().equals(false)){
+                    bufferedWriter.write((juntadas.get(i).getMiTelefono()).toString() + "," + (juntadas.get(i).getTelefono()).toString() + "," + (juntadas.get(i).getFechaDesde()) + "," + (juntadas.get(i).getFechaHasta()) + "," + (juntadas.get(i).getConfirmado()).toString() + "," + (juntadas.get(i).getConfirmado()).toString());
+                    bufferedWriter.newLine();
+                }if (juntadas.get(i).getVisto().equals(true) && juntadas.get(i).getConfirmado().equals(true)){
+                    bufferedWriter.write((juntadas.get(i).getMiTelefono()).toString() + "," + (juntadas.get(i).getTelefono()).toString() + "," + (juntadas.get(i).getFechaDesde()) + "," + (juntadas.get(i).getFechaHasta()) + "," + (juntadas.get(i).getConfirmado()).toString() + "," + (juntadas.get(i).getConfirmado()).toString());
+                    bufferedWriter.newLine();
+                }else{
+
+                }
+            }
+        }catch(IOException e){
+            System.out.println(e.getMessage());
+        }
+
     }
 }

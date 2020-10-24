@@ -3,10 +3,12 @@ public class sistema {
         Ciudadanos ciudadanos = new Ciudadanos();
         Administradores administradores = new Administradores();
         Evento eventos = new Evento();
+        Juntadas juntadas = new Juntadas();
         FileManagement.generateCiudadanos(ciudadanos);
         FileManagement.generateAdministradores(administradores);
         FileManagement.generateEventos(eventos);
-        Inicio.menuInicial(ciudadanos, administradores, eventos);
+        FileManagement.generateJuntadas(juntadas);
+        Inicio.menuInicial(ciudadanos, administradores, eventos, juntadas);
 
     }
 
