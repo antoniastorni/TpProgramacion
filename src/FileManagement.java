@@ -8,6 +8,23 @@ public class FileManagement {
             while ((line = bufferedReader.readLine()) != null) {
                 String[] gente = line.split(",");
                 ciudadanos.add(new Ciudadano((Double.parseDouble(gente[0])),(Double.parseDouble(gente[1])),(gente[2]), (Integer.parseInt(gente[3])), Boolean.parseBoolean(gente[4])));
+
+            }
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+        }
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\Usuario\\IdeaProjects\\TpProgramacion\\src\\Anses\\EventosCiud.txt"))){
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] eventosgente = line.split(",");
+                for (int i = 0; i < ciudadanos.size(); i++) {
+                    Double cuil = Double.parseDouble(eventosgente[0]);
+                    if (ciudadanos.get(i).getCUIL().equals(cuil)){
+                        for (int j = 1; j < eventosgente.length; j++) {
+                            ciudadanos.get(i).sintomas.add(eventosgente[j]);
+                        }
+                    }
+                }
+
             }
         }catch (IOException e){
             System.out.println(e.getMessage());
@@ -58,15 +75,20 @@ public class FileManagement {
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Usuario\\IdeaProjects\\TpProgramacion\\src\\Anses\\ciudadanos.txt"))) {
             for (int i = 0; i < ciudadanos.size(); i++) {
                 bufferedWriter.write((ciudadanos.get(i).getCUIL()).toString() + "," + (ciudadanos.get(i).getTelefono()).toString() + "," + (ciudadanos.get(i).getZona()) + "," + (ciudadanos.get(i).getBloqueado()).toString() + "," + (ciudadanos.get(i).getCoronavirus()).toString() + ",");
+                bufferedWriter.newLine();
+            }
+        }catch(IOException e){
+            System.out.println(e.getMessage());
+        }
+        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Usuario\\IdeaProjects\\TpProgramacion\\src\\Anses\\EventosCiud.txt"))) {
+            for (int i = 0; i < ciudadanos.get(i).sintomas.size(); i++) {
+                bufferedWriter.write((ciudadanos.get(i).getCUIL()).toString());
                 for (int j = 0; j < ciudadanos.get(i).sintomas.size(); j++) {
-                    if (ciudadanos.get(i).sintomas.size() - 1 == j){
-                        bufferedWriter.write(ciudadanos.get(i).sintomas.get(j));
-                    }else{
-                        bufferedWriter.write(ciudadanos.get(i).sintomas.get(j) + "/");
-                    }
+                    bufferedWriter.write("," +ciudadanos.get(i).sintomas.get(j));
                 }
                 bufferedWriter.newLine();
             }
+
         }catch(IOException e){
             System.out.println(e.getMessage());
         }

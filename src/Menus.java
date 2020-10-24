@@ -19,7 +19,9 @@ public class Menus {
                     a.agregar(eventos, i);
                     break;
                 case 2:
-                    a.printSintomas();
+                    for (int j = 0; j < a.sintomas.size(); j++){
+                        System.out.println(j + " " + a.sintomas.get(j));
+                    }
                     Integer remove = Scanner.getInt("seleccione el sintoma: ");
                     a.sintomas.remove(remove);
                     break;

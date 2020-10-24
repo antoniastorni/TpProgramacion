@@ -24,13 +24,8 @@ public class Tester {// tester para
         ciud.agregar(evento, 0);
         ciud.agregar(evento, 1);
         ciud.agregar(evento, 2);
-        ciud.size();
         if (ciud.coronavirus){
             System.out.println("hola");
         }
-        evento.print();
-        ciud.printSintomas();
-
-
     }
 }

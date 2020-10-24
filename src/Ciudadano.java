@@ -53,10 +53,6 @@ public class Ciudadano {
         covid();
     }
 
-    public void size(){//Muestra el tamaño de la lista de sintomas del Ciudadano
-        System.out.println(sintomas.size());
-    }
-
     public void covid(){// Si el size de la lista de cintomas del ciudadano es mayor o igual a 3, este tiene covid
         if (sintomas.size() >= 2){
             coronavirus = true;
@@ -83,9 +79,5 @@ public class Ciudadano {
         System.out.println("Usuario no encontrado");
     }
 
-    public void printSintomas(){
-        for (int i = 0; i < sintomas.size(); i++){
-            System.out.println(i + " " + sintomas.get(i));
-        }
-    }
+
 }
