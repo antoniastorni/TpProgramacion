@@ -1,3 +1,10 @@
+package Programa;
+
+import ArrayLists.Administradores;
+import ArrayLists.Ciudadanos;
+import ArrayLists.Evento;
+import ArrayLists.Juntadas;
+
 public class sistema {
     public static void main(String[] args) {
         Ciudadanos ciudadanos = new Ciudadanos();

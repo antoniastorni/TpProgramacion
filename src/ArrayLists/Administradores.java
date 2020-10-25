@@ -1,3 +1,7 @@
+package ArrayLists;
+
+import Constructores.Administrador;
+
 import java.util.ArrayList;
 //Lista de administradores
 public class Administradores {
@@ -16,7 +20,7 @@ public class Administradores {
         if(administradores.contains(a)){
             administradores.remove(a);
         }else{
-            System.out.println("Ciudadano No Encontrado");
+            System.out.println("Constructores.Ciudadano No Encontrado");
         }
     }
 

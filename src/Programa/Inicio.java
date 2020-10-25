@@ -1,3 +1,11 @@
+package Programa;
+
+import ArrayLists.Administradores;
+import ArrayLists.Ciudadanos;
+import ArrayLists.Evento;
+import ArrayLists.Juntadas;
+import Constructores.Ciudadano;
+
 public class Inicio {
     public static void menuInicial(Ciudadanos ciudadanos, Administradores administradores, Evento eventos, Juntadas juntadas){
         while(true){
@@ -6,7 +14,7 @@ public class Inicio {
             switch (b) {
                 case 1:
                     Double a = Scanner.getDouble("Ingrese su CUIL: ");
-                    Double c =Scanner.getDouble("Ingrese su Telefono: ");
+                    Double c = Scanner.getDouble("Ingrese su Telefono: ");
                     buscarUsuario(a, c, ciudadanos, administradores, eventos, juntadas);
                     System.exit(0);
                     break;

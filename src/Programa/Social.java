@@ -1,3 +1,9 @@
+package Programa;
+
+import ArrayLists.Ciudadanos;
+import ArrayLists.Juntadas;
+import Constructores.Ciudadano;
+
 public class Social {
     public static void solicitudes(Ciudadano a, Juntadas juntadas, Ciudadanos ciudadanos){
         for (int i = 0; i < juntadas.size(); i++) {

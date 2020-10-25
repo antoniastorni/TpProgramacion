@@ -1,21 +1,26 @@
+package Constructores;
+
+import ArrayLists.Ciudadanos;
+import ArrayLists.Evento;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 public class Ciudadano {
-    private Double CUIL;
-    private Double telefono;
-    private String zona;
-    Integer bloqueado;
-    ArrayList<String> sintomas;
-    Boolean coronavirus;
+    public Double CUIL;
+    public Double telefono;
+    public String zona;
+    public Integer bloqueado;
+    public ArrayList<String> sintomas;
+    public Boolean coronavirus;
 
     public Ciudadano(Double CUIL, Double telefono, String zona){
         this.CUIL = CUIL;
         this.telefono = telefono;
         this.zona = zona;
         this.bloqueado = 0;
-        this.sintomas = new ArrayList<String>();
+        this.sintomas = new ArrayList<>();
         this.coronavirus = false;
     }
 
@@ -48,7 +53,7 @@ public class Ciudadano {
         return coronavirus;
     }
 
-    public void agregar(Evento evento, Integer a){//Agrega un sintoma de la lista de eventos a la de el Ciudadano
+    public void agregar(Evento evento, Integer a){//Agrega un sintoma de la lista de eventos a la de el Constructores.Ciudadano
         sintomas.add(evento.get(a));
         covid();
     }
@@ -77,6 +82,14 @@ public class Ciudadano {
             }
         }
         System.out.println("Usuario no encontrado");
+    }
+
+    public void remove(int i){
+        try {
+            sintomas.remove(i);
+        }catch (IndexOutOfBoundsException e){
+            System.out.println("Ingrese valor existente");
+        }
     }
 
 

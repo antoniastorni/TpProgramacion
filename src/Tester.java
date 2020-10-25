@@ -1,3 +1,9 @@
+import ArrayLists.Administradores;
+import ArrayLists.Ciudadanos;
+import ArrayLists.Evento;
+import Constructores.Administrador;
+import Constructores.Ciudadano;
+
 public class Tester {// tester para
     public static void main(String[] args) {
         Administrador admin1 = new Administrador((double)123,(double)1234, "");

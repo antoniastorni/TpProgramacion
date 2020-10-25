@@ -1,4 +1,9 @@
-import java.util.ArrayList;
+package Constructores;
+
+
+import ArrayLists.Administradores;
+import ArrayLists.Ciudadanos;
+import ArrayLists.Evento;
 
 public class Administrador{
     private Double CUIL;
@@ -52,7 +57,7 @@ public class Administrador{
         return b;
     }
 
-    public Ciudadano transCiud(Double cuil, Administradores a, Ciudadanos c){// transforma el Administrador en ciudadano
+    public Ciudadano transCiud(Double cuil, Administradores a, Ciudadanos c){// transforma el Constructores.Administrador en ciudadano
         Ciudadano b = null;
         for (Integer i = 0; i < a.size(); i++){
             if (cuil.equals((a.get(i).getCUIL()))){

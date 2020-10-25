@@ -1,3 +1,7 @@
+package ArrayLists;
+
+import Constructores.Juntada;
+
 import java.util.ArrayList;
 
 public class Juntadas {
@@ -15,7 +19,7 @@ public class Juntadas {
         if(juntadas.contains(a)){
             juntadas.remove(a);
         }else{
-            System.out.println("Ciudadano No Encontrado");
+            System.out.println("Constructores.Ciudadano No Encontrado");
         }
     }
 

@@ -1,11 +1,13 @@
+package Constructores;
+
 public class Juntada {
 
     Double MiTelefono;
     Double Telefono;
     String fechaDesde;
     String fechaHasta;
-    Boolean confirmado;
-    Boolean visto;
+    public Boolean confirmado;
+    public Boolean visto;
 
     public Juntada (Double MiTelefono, Double Telefono, String fechaDesde, String fechaHasta, Boolean confirmado, Boolean visto){
         this.MiTelefono = MiTelefono;

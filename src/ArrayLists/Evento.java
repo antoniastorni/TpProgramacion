@@ -1,3 +1,5 @@
+package ArrayLists;
+
 import java.util.ArrayList;
 //Lista de los sintomas de covid
 public class Evento {

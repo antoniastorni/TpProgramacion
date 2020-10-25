@@ -1,5 +1,15 @@
+package Programa;
+
+import ArrayLists.Administradores;
+import ArrayLists.Ciudadanos;
+import ArrayLists.Evento;
+import ArrayLists.Juntadas;
+import Constructores.Administrador;
+import Constructores.Ciudadano;
+import Programa.FileManagement;
+
 public class Menus {
-    public static void menuCiudadanos(Ciudadano a, Ciudadanos ciudadanos,Evento eventos, Juntadas juntadas){
+    public static void menuCiudadanos(Ciudadano a, Ciudadanos ciudadanos, Evento eventos, Juntadas juntadas){
         //Inicia el menu de ciudadanos con sus opciones
         if (a.bloqueado >= 5){
             System.out.println("Usted esta bloqueado");
@@ -22,8 +32,8 @@ public class Menus {
                     for (int j = 0; j < a.sintomas.size(); j++){
                         System.out.println(j + " " + a.sintomas.get(j));
                     }
-                    Integer remove = Scanner.getInt("seleccione el sintoma: ");
-                    a.sintomas.remove(remove);
+                    int remove = Scanner.getInt("seleccione el sintoma: ");
+                    a.remove(remove);
                     break;
                 case 3:
                     Double Telefono = Scanner.getDouble("Ingrese el Telefono de la persona con la que se junto: ");

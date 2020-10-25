@@ -1,3 +1,7 @@
+package ArrayLists;
+
+import Constructores.Ciudadano;
+
 import java.util.ArrayList;
 //Lista de todos los ciudadanos
 public class Ciudadanos {
@@ -12,11 +16,7 @@ public class Ciudadanos {
     }
 
     public void remove(Ciudadano a){
-        if(personas.contains(a)){
-            personas.remove(a);
-        }else{
-            System.out.println("Ciudadano No Encontrado");
-        }
+        personas.remove(a);
     }
 
     public Integer size(){
