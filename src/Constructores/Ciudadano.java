@@ -72,7 +72,7 @@ public class Ciudadano {
             if (Telefono.equals(gente.get(i).getTelefono())){
                 Boolean confirmado = false;
                 Boolean visto = false;
-                try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\Users\\Usuario\\IdeaProjects\\TpProgramacion\\src\\Anses\\JuntadasConfirm.txt"))) {
+                try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("src\\Anses\\JuntadasConfirm.txt"))) {
                     bufferedWriter.write(CUIL.toString() + "," + Telefono.toString() + "," + diaDesde + "," + diaHasta + "," + confirmado.toString() + "," + visto.toString());
                     bufferedWriter.newLine();
                 }catch(IOException e){
