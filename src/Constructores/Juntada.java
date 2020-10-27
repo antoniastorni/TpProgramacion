@@ -16,7 +16,6 @@ public class Juntada {
         this.fechaHasta = fechaHasta;
         this.confirmado = confirmado;
         this.visto = visto;
-
     }
 
     public Double getMiTelefono() {

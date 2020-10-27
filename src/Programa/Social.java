@@ -19,7 +19,7 @@ public class Social {
                     case 2:
                         for (int j = 0; j < ciudadanos.size(); j++) {
                             if(juntadas.get(i).getMiTelefono().equals(ciudadanos.get(j).getTelefono())){
-                                ciudadanos.get(j).bloqueado +=1;
+                                ciudadanos.get(j).bloqueado += 1;
                             }
                         }
                         juntadas.get(i).visto = true;

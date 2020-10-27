@@ -56,7 +56,7 @@ public class Menus {
     public static void menuAdministradores(Administrador a, Ciudadanos ciudadanos, Evento eventos, Administradores administradores){
         // menu de administradores
         while(true){
-            System.out.println("1 transformar ciudadano en administrador\n2 transformar administrador en ciudadano\n3 Agregar evento\n4 Remover evento\n5 Salir");
+            System.out.println("1 transformar ciudadano en administrador\n2 desbloquear ciudadano \n3 Agregar evento\n4 Remover evento\n5 Salir");
             int b = Scanner.getInt("Seleccione el numero de su respuesta: ");
             switch (b){
                 case 1:
@@ -64,8 +64,13 @@ public class Menus {
                     a.transAdmin(cuil1, ciudadanos, administradores);
                     break;
                 case 2:
-                    Double cuil2 = Scanner.getDouble("Ingrese el cuil de el administrador: ");
-                    a.transCiud(cuil2, administradores, ciudadanos);
+                    for (int i = 0; i < ciudadanos.size(); i++) {
+                        if (ciudadanos.get(i).bloqueado >= 5){
+                            System.out.println("Cuil: " + ciudadanos.get(i).CUIL + ", Telefono:" + ciudadanos.get(i).telefono + ", Zona: " + ciudadanos.get(i));
+                        }
+                    }
+                    Double cuil2 = Scanner.getDouble("Ingrese el cuil de el ciudadano: ");
+                    a.desblock(cuil2, ciudadanos);
                     break;
                 case 3:
                     String evento1 = Scanner.getString("Que sintoma desea agregar: ");

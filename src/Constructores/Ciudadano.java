@@ -15,7 +15,7 @@ public class Ciudadano {
     public ArrayList<String> sintomas;
     public Boolean coronavirus;
 
-    public Ciudadano(Double CUIL, Double telefono, String zona){
+    public Ciudadano(Double CUIL, Double telefono, String zona){// Constructor utilizado al crear nuevea cuenta
         this.CUIL = CUIL;
         this.telefono = telefono;
         this.zona = zona;
@@ -24,12 +24,12 @@ public class Ciudadano {
         this.coronavirus = false;
     }
 
-    public Ciudadano(Double CUIL, Double telefono, String zona, Integer bloqueado, Boolean coronavirus){
+    public Ciudadano(Double CUIL, Double telefono, String zona, Integer bloqueado, Boolean coronavirus){// Constructor utilizado para cuentas ya existentes
         this.CUIL = CUIL;
         this.telefono = telefono;
         this.zona = zona;
         this.bloqueado = bloqueado;
-        this.sintomas = new ArrayList<String>();
+        this.sintomas = new ArrayList<>();
         this.coronavirus = coronavirus;
     }
 
@@ -58,10 +58,10 @@ public class Ciudadano {
         covid();
     }
 
-    public void covid(){// Si el size de la lista de cintomas del ciudadano es mayor o igual a 3, este tiene covid
+    public void covid(){// Si el size de la lista de sintomas del ciudadano es mayor o igual a 2, el ciudadano tiene covid
         if (sintomas.size() >= 2){
             coronavirus = true;
-            System.out.println("Usted tiene coronavirus");
+            System.out.println("¡Usted tiene coronavirus!");
         }else{
             coronavirus = false;
         }
