@@ -54,8 +54,12 @@ public class Ciudadano {
     }
 
     public void agregar(Evento evento, Integer a){//Agrega un sintoma de la lista de eventos a la de el Constructores.Ciudadano
-        sintomas.add(evento.get(a));
-        covid();
+        if (sintomas.contains(evento.get(a))){
+            System.out.println("Usted ya reporto este sintoma");
+        }else{
+            sintomas.add(evento.get(a));
+            covid();
+        }
     }
 
     public void covid(){// Si el size de la lista de sintomas del ciudadano es mayor o igual a 2, el ciudadano tiene covid
@@ -67,7 +71,7 @@ public class Ciudadano {
         }
     }
 
-    public void juntada(Ciudadanos gente, String diaDesde, String diaHasta, Double Telefono){
+    public void juntada(Ciudadanos gente, String diaDesde, String diaHasta, Double Telefono){// agrega una juntada en el archivo juntadas
         for (int i = 0; i < gente.size(); i++) {
             if (Telefono.equals(gente.get(i).getTelefono())){
                 Boolean confirmado = false;
@@ -84,7 +88,7 @@ public class Ciudadano {
         System.out.println("Usuario no encontrado");
     }
 
-    public void remove(int i){
+    public void remove(int i){// remueve sintomas
         try {
             sintomas.remove(i);
         }catch (IndexOutOfBoundsException e){

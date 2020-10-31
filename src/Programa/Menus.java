@@ -16,8 +16,8 @@ public class Menus {
             return;
         }
 
+        EventosZona.EventosRanking(ciudadanos, "tigre");
         Social.solicitudes(a, juntadas, ciudadanos);
-
 
         while(true){
             System.out.println("1 Reportar sintomas\n2 Remover sintoma\n3 Reportar juntada\n4 Salir");

@@ -11,8 +11,7 @@ import Constructores.Juntada;
 import java.io.*;
 
 public class FileManagement {
-    public static void generateCiudadanos(Ciudadanos ciudadanos){
-        //genera el arrayList de ciudadanos a partir de los archivos
+    public static void generateCiudadanos(Ciudadanos ciudadanos){//genera el arrayList de ciudadanos a partir de los archivos
         String line;
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\Anses\\ciudadanos.txt"));){
             while ((line = bufferedReader.readLine()) != null) {
@@ -40,9 +39,7 @@ public class FileManagement {
             System.out.println(e.getMessage());
         }
     }
-
-    public static void generateAdministradores(Administradores administradores){
-        //genera el arrayList de administradores a partir de los archivos
+    public static void generateAdministradores(Administradores administradores){//genera el arrayList de administradores a partir de los archivos
         String line;
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\Anses\\administradores.txt"));){
             while ((line = bufferedReader.readLine()) != null) {
@@ -53,10 +50,7 @@ public class FileManagement {
             System.out.println(e.getMessage());
         }
     }
-
-    public static void generateEventos(Evento eventos){
-        //genera el arrayList de eventos a partir de los archivos
-
+    public static void generateEventos(Evento eventos){//genera el arrayList de eventos a partir de los archivos
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\Anses\\eventos.txt"));){
             String line;
             while ((line = bufferedReader.readLine()) != null) {
@@ -66,9 +60,7 @@ public class FileManagement {
             System.out.println(e.getMessage());
         }
     }
-
-    public static void generateJuntadas(Juntadas juntadas){
-        //genera el arrayList de ciudadanos a partir de los archivos
+    public static void generateJuntadas(Juntadas juntadas){//genera el arrayList de ciudadanos a partir de los archivos
         String line;
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\Anses\\JuntadasConfirm.txt"));){
             while ((line = bufferedReader.readLine()) != null) {
@@ -79,19 +71,17 @@ public class FileManagement {
             System.out.println(e.getMessage());
         }
     }
-
-    public static void writeCiudadanos(Ciudadanos ciudadanos){
-        //escribe en el archivo de arrayList de ciudadanos los nuevos cambios
+    public static void writeCiudadanos(Ciudadanos ciudadanos){//escribe en el archivo de arrayList de ciudadanos los nuevos cambios
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("src\\Anses\\ciudadanos.txt"))) {
             for (int i = 0; i < ciudadanos.size(); i++) {
-                bufferedWriter.write((ciudadanos.get(i).getCUIL()).toString() + "," + (ciudadanos.get(i).getTelefono()).toString() + "," + (ciudadanos.get(i).getZona()) + "," + (ciudadanos.get(i).getBloqueado()).toString() + "," + (ciudadanos.get(i).getCoronavirus()).toString() + ",");
+                bufferedWriter.write((ciudadanos.get(i).getCUIL()).toString() + "," + (ciudadanos.get(i).getTelefono()).toString() + "," + (ciudadanos.get(i).getZona()) + "," + (ciudadanos.get(i).getBloqueado()).toString() + "," + (ciudadanos.get(i).getCoronavirus()).toString());
                 bufferedWriter.newLine();
             }
         }catch(IOException e){
             System.out.println(e.getMessage());
         }
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("src\\Anses\\EventosCiud.txt"))) {
-            for (int i = 0; i < ciudadanos.get(i).sintomas.size(); i++) {
+            for (int i = 0; i < ciudadanos.size(); i++) {
                 bufferedWriter.write((ciudadanos.get(i).getCUIL()).toString());
                 for (int j = 0; j < ciudadanos.get(i).sintomas.size(); j++) {
                     bufferedWriter.write("," +ciudadanos.get(i).sintomas.get(j));
@@ -102,9 +92,7 @@ public class FileManagement {
             System.out.println(e.getMessage());
         }
     }
-
-    public static void writeEventos(Evento eventos){
-        //escrive en el archivo de arrayList de eventos los nuevos cambios
+    public static void writeEventos(Evento eventos){//escrive en el archivo de arrayList de eventos los nuevos cambios
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("src\\Anses\\eventos.txt"))) {
             for (int i = 0; i < eventos.size(); i++) {
                 bufferedWriter.write(eventos.get(i));
@@ -114,9 +102,7 @@ public class FileManagement {
             System.out.println(e.getMessage());
         }
     }
-
-    public static void writeAdministrador(Administradores administradores){
-        //escribe en el archivo de arrayList de ciudadanos los nuevos cambios
+    public static void writeAdministrador(Administradores administradores){//escribe en el archivo de arrayList de ciudadanos los nuevos cambios
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("src\\Anses\\administradores.txt"))) {
             for (int i = 0; i < administradores.size(); i++) {
                 bufferedWriter.write((administradores.get(i).getCUIL()).toString() + "," + (administradores.get(i).getTelefono()).toString() + "," + (administradores.get(i).getZona()));
@@ -127,9 +113,7 @@ public class FileManagement {
         }
 
     }
-
-    public static void writeJuntadas(Juntadas juntadas){
-        //escribe en el archivo de arrayList de ciudadanos los nuevos cambios
+    public static void writeJuntadas(Juntadas juntadas){//escribe en el archivo de arrayList de ciudadanos los nuevos cambios
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("src\\Anses\\JuntadasConfirm.txt"))) {
             for (int i = 0; i < juntadas.size(); i++) {
                 if (juntadas.get(i).getVisto().equals(false) && juntadas.get(i).getConfirmado().equals(false)){

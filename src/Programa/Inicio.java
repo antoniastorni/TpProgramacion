@@ -36,7 +36,6 @@ public class Inicio {
         ciudadanos.add(ciudadano);
         Menus.menuCiudadanos(ciudadano, ciudadanos, eventos, juntadas);
     }
-
     public static void buscarUsuario(Double cuil, Double telefono, Ciudadanos ciudadanos, Administradores administradores, Evento eventos, Juntadas juntadas){
         for (int i = 0;  i < ciudadanos.size(); i++){
             if(cuil.equals(ciudadanos.get(i).getCUIL()) && telefono.equals(ciudadanos.get(i).getTelefono())){
@@ -51,5 +50,4 @@ public class Inicio {
         System.out.println("Usuario no encontrado");
         menuInicial(ciudadanos, administradores, eventos, juntadas);
     }
-
 }

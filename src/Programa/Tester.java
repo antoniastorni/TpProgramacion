@@ -1,8 +1,11 @@
+package Programa;
+
 import ArrayLists.Administradores;
 import ArrayLists.Ciudadanos;
 import ArrayLists.Evento;
 import Constructores.Administrador;
 import Constructores.Ciudadano;
+import Programa.EventosZona;
 
 public class Tester {// tester para
     public static void main(String[] args) {
