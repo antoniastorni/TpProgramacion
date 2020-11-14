@@ -1,3 +1,3 @@
 321.0,Problemas respiratorios,Tos,Perdida del olfato
 567.0,Tos
-0.0
+0.0,Tos,Problemas respiratorios

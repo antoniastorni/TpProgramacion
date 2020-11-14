@@ -20,6 +20,13 @@ public class Social {
                     case 1:
                         juntadas.get(i).confirmado = true;
                         juntadas.get(i).visto = true;
+                        a.covidNotificar(juntadas, ciudadanos);
+                        for (int j = 0; j < ciudadanos.size(); j++) {
+                            if(juntadas.get(i).getMiTelefono().equals(ciudadanos.get(j).getTelefono())){
+                                ciudadanos.get(j).covidNotificar(juntadas, ciudadanos);
+                            }
+                        }
+
                         break;
                     case 2:
                         for (int j = 0; j < ciudadanos.size(); j++) {

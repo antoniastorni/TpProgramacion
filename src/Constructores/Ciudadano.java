@@ -93,6 +93,33 @@ public class Ciudadano {
             coronavirus = false;
         }
     }
+
+    public void covidNotificar(Juntadas juntadas, Ciudadanos ciudadanos){
+        if (sintomas.size() >= 2){
+            coronavirus = true;
+            Calendar calendar = Calendar.getInstance();
+            Integer dia = calendar.get(Calendar.DATE);
+            Integer mes = calendar.get(Calendar.MONTH) + 1;
+            for (int i = 0; i < juntadas.size(); i++) {
+                if (telefono.equals(juntadas.get(i).getMiTelefono())){
+                    for (int j = 0; j < ciudadanos.size(); j++) {
+                        if (ciudadanos.get(j).telefono.equals(juntadas.get(i).getTelefono())){
+                            advetir(ciudadanos.get(j));
+                        }
+                    }
+                }if (telefono.equals(juntadas.get(i).getTelefono())){
+                    for (int j = 0; j < ciudadanos.size(); j++) {
+                        if (ciudadanos.get(j).telefono.equals(juntadas.get(i).getMiTelefono())){
+                            advetir(ciudadanos.get(j));
+                        }
+                    }
+                }
+            }
+        }else{
+            coronavirus = false;
+        }
+    }
+
     public void advetir(Ciudadano ciudadano){
         Calendar calendar = Calendar.getInstance();
         Integer diaDesde = calendar.get(Calendar.DATE);

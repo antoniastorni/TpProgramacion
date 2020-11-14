@@ -57,7 +57,6 @@ public class Menus {
                     EventosZona.EventosRanking(ciudadanos, a.zona);
                     break;
                 case 5:
-
                     FileManagement.writeJuntadas(juntadas);
                     FileManagement.writeCiudadanos(ciudadanos);
                     System.exit(0);
