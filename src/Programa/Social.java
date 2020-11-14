@@ -4,6 +4,11 @@ import ArrayLists.Ciudadanos;
 import ArrayLists.Juntadas;
 import Constructores.Ciudadano;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Calendar;
+
 public class Social {
     public static void solicitudes(Ciudadano a, Juntadas juntadas, Ciudadanos ciudadanos){
         for (int i = 0; i < juntadas.size(); i++) {
@@ -32,5 +37,26 @@ public class Social {
         }
     }
 
+    public static void notificacion(Ciudadano ciudadano){
+        Calendar calendar = Calendar.getInstance();
+        Integer dia = calendar.get(Calendar.DATE);
+        Integer mes = calendar.get(Calendar.MONTH) + 1;
+        String line;
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\Anses\\Notificar.txt"));){
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] adv = line.split(",");
+                if (ciudadano.CUIL.equals(Double.parseDouble(adv[1]))){
+                    if (dia <= Integer.parseInt(adv[4])){
+                        System.out.println("El ciudadano " + adv[0] + " con el que se junto tiene coronavirus");
+                    }if (dia > Integer.parseInt(adv[4]) && mes < Integer.parseInt(adv[5])){
+                        System.out.println("El ciudadano " + adv[0] + " con el que se junto tiene coronavirus");
+                    }else{
 
+                    }
+                }
+            }
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+        }
+    }
 }

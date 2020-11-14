@@ -15,18 +15,21 @@ public class Menus {
             System.out.println("Usted esta bloqueado");
             return;
         }
-
-        EventosZona.EventosRanking(ciudadanos, "tigre");
         Social.solicitudes(a, juntadas, ciudadanos);
-
+        Social.notificacion(a);
         while(true){
-            System.out.println("1 Reportar sintomas\n2 Remover sintoma\n3 Reportar juntada\n4 Salir");
+            System.out.println("1 Reportar sintomas\n2 Remover sintoma\n3 Reportar juntada\n4 Sintomas comunes de tu zona\n5 Salir");
             int b = Scanner.getInt("Seleccione el numero de su respuesta: ");
             switch (b) {
                 case 1:
                     eventos.print();
                     Integer i = Scanner.getInt("seleccione el sintoma: ");
                     a.agregar(eventos, i);
+                    if (a.sintomas.size() >= 2){
+                        System.out.println("!usted tiene covid¡");
+                    }if (a.sintomas.size() == 2){
+                        a.covid(juntadas, ciudadanos);
+                    }
                     break;
                 case 2:
                     for (int j = 0; j < a.sintomas.size(); j++){
@@ -34,15 +37,27 @@ public class Menus {
                     }
                     int remove = Scanner.getInt("seleccione el sintoma: ");
                     a.remove(remove);
+                    if (a.sintomas.size() <= 1){
+                        System.out.println("usted no tiene covid");
+                        a.covid(juntadas, ciudadanos);
+                    }
                     break;
                 case 3:
                     Double Telefono = Scanner.getDouble("Ingrese el Telefono de la persona con la que se junto: ");
-                    String diaDesde = Scanner.getString("desde que fecha? (Ingrese Dia/Mes/Año): ");
-                    String diaHasta = Scanner.getString("Hasta que fecha? (Ingrese Dia/Mes/Año): ");
-                    a.juntada(ciudadanos, diaDesde, diaHasta, Telefono);
+                    Integer diaDesde = Scanner.getInt("desde que dia?: ");
+                    Integer mesDesde = Scanner.getInt("desde que mes? (Ingrese numero): ");
+                    Integer diaHasta = Scanner.getInt("Hasta que dia? (Ingrese Dia/Mes/Año): ");
+                    Integer mesHasta = Scanner.getInt("desde que mes? (Ingrese numero): ");
+                    String juntadaDesde = diaDesde + "/" + mesDesde;
+                    String juntadaHasta = diaHasta + "/" + mesHasta;
+                    a.juntada(ciudadanos, juntadaDesde, juntadaHasta, Telefono);
                     FileManagement.generateJuntadas(juntadas);
                     break;
                 case 4:
+                    EventosZona.EventosRanking(ciudadanos, a.zona);
+                    break;
+                case 5:
+
                     FileManagement.writeJuntadas(juntadas);
                     FileManagement.writeCiudadanos(ciudadanos);
                     System.exit(0);
@@ -52,7 +67,6 @@ public class Menus {
             }
         }
     }
-
     public static void menuAdministradores(Administrador a, Ciudadanos ciudadanos, Evento eventos, Administradores administradores){
         // menu de administradores
         while(true){

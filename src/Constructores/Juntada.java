@@ -30,6 +30,26 @@ public class Juntada {
         return fechaHasta;
     }
 
+    public Integer getDiaDesde(){
+        String[] fechaInt = fechaDesde.split("/");
+        return Integer.parseInt(fechaInt[0]);
+    }
+
+    public Integer getMesDesde(){
+        String[] fechaInt = fechaDesde.split("/");
+        return Integer.parseInt(fechaInt[1]);
+    }
+
+    public Integer getDiaHasta(){
+        String[] fechaInt = fechaHasta.split("/");
+        return Integer.parseInt(fechaInt[0]);
+    }
+
+    public Integer getMesHasta(){
+        String[] fechaInt = fechaHasta.split("/");
+        return Integer.parseInt(fechaInt[1]);
+    }
+
     public Double getTelefono() {
         return Telefono;
     }
