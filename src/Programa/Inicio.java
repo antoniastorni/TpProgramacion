@@ -1,13 +1,10 @@
 package Programa;
 
-import ArrayLists.Administradores;
-import ArrayLists.Ciudadanos;
-import ArrayLists.Evento;
-import ArrayLists.Juntadas;
+import ArrayLists.*;
 import Constructores.Ciudadano;
 
 public class Inicio {
-    public static void menuInicial(Ciudadanos ciudadanos, Administradores administradores, Evento eventos, Juntadas juntadas){
+    public static void menuInicial(Ciudadanos ciudadanos, Administradores administradores, Evento eventos, Juntadas juntadas, Brotes brotes){
         while(true){
             System.out.println("1 Iniciar sesion\n2 Crear cuenta");
             int b = Scanner.getInt("Seleccione el numero de su respuesta: ");
@@ -15,11 +12,11 @@ public class Inicio {
                 case 1:
                     Double a = Scanner.getDouble("Ingrese su CUIL: ");
                     Double c = Scanner.getDouble("Ingrese su Telefono: ");
-                    buscarUsuario(a, c, ciudadanos, administradores, eventos, juntadas);
+                    buscarUsuario(a, c, ciudadanos, administradores, eventos, juntadas, brotes);
                     System.exit(0);
                     break;
                 case 2:
-                    crearCuenta(ciudadanos, eventos, juntadas);
+                    crearCuenta(ciudadanos, eventos, juntadas, brotes);
                     System.exit(0);
                     break;
                 default:
@@ -28,18 +25,18 @@ public class Inicio {
             }
         }
     }
-    public static void crearCuenta(Ciudadanos ciudadanos, Evento eventos, Juntadas juntadas){
+    public static void crearCuenta(Ciudadanos ciudadanos, Evento eventos, Juntadas juntadas, Brotes brotes){
         Double cuil = Scanner.getDouble("Ingrese su cuil: ");
         Double telefono = Scanner.getDouble("Ingrese su numero de telefono: ");
         String zona = Scanner.getString("Ingrese su zona: ");
         Ciudadano ciudadano = new Ciudadano(cuil, telefono, zona);
         ciudadanos.add(ciudadano);
-        Menus.menuCiudadanos(ciudadano, ciudadanos, eventos, juntadas);
+        Menus.menuCiudadanos(ciudadano, ciudadanos, eventos, juntadas, brotes);
     }
-    public static void buscarUsuario(Double cuil, Double telefono, Ciudadanos ciudadanos, Administradores administradores, Evento eventos, Juntadas juntadas){
+    public static void buscarUsuario(Double cuil, Double telefono, Ciudadanos ciudadanos, Administradores administradores, Evento eventos, Juntadas juntadas, Brotes brotes){
         for (int i = 0;  i < ciudadanos.size(); i++){
             if(cuil.equals(ciudadanos.get(i).getCUIL()) && telefono.equals(ciudadanos.get(i).getTelefono())){
-                Menus.menuCiudadanos(ciudadanos.get(i), ciudadanos, eventos, juntadas);
+                Menus.menuCiudadanos(ciudadanos.get(i), ciudadanos, eventos, juntadas, brotes);
             }
         }
         for (int i = 0;  i < administradores.size(); i++){
@@ -48,6 +45,6 @@ public class Inicio {
             }
         }
         System.out.println("Usuario no encontrado");
-        menuInicial(ciudadanos, administradores, eventos, juntadas);
+        menuInicial(ciudadanos, administradores, eventos, juntadas, brotes);
     }
 }

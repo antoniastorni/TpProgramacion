@@ -1,9 +1,6 @@
 package Programa;
 
-import ArrayLists.Administradores;
-import ArrayLists.Ciudadanos;
-import ArrayLists.Evento;
-import ArrayLists.Juntadas;
+import ArrayLists.*;
 
 public class sistema {
     public static void main(String[] args) {
@@ -11,11 +8,13 @@ public class sistema {
         Administradores administradores = new Administradores();
         Evento eventos = new Evento();
         Juntadas juntadas = new Juntadas();
+        Brotes brotes = new Brotes();
         FileManagement.generateCiudadanos(ciudadanos);
         FileManagement.generateAdministradores(administradores);
         FileManagement.generateEventos(eventos);
         FileManagement.generateJuntadas(juntadas);
-        Inicio.menuInicial(ciudadanos, administradores, eventos, juntadas);
+        FileManagement.generateBrotes(brotes);
+        Inicio.menuInicial(ciudadanos, administradores, eventos, juntadas, brotes);
 
     }
 

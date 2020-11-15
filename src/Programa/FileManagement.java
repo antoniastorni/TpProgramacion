@@ -1,14 +1,12 @@
 package Programa;
 
-import ArrayLists.Administradores;
-import ArrayLists.Ciudadanos;
-import ArrayLists.Evento;
-import ArrayLists.Juntadas;
+import ArrayLists.*;
 import Constructores.Administrador;
 import Constructores.Ciudadano;
 import Constructores.Juntada;
 
 import java.io.*;
+import java.util.Calendar;
 
 public class FileManagement {
     public static void generateCiudadanos(Ciudadanos ciudadanos){//genera el arrayList de ciudadanos a partir de los archivos
@@ -71,6 +69,26 @@ public class FileManagement {
             System.out.println(e.getMessage());
         }
     }
+
+    public static void generateBrotes(Brotes brotes){//genera el arrayList de administradores a partir de los archivos
+        String line;
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\Anses\\Brotes.txt"));){
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] brote = line.split(",");
+                if (brote.length == 3){
+                    brotes.addNew(Double.parseDouble(brote[0]), Double.parseDouble(brote[1]), Double.parseDouble(brote[2]));
+                }else{
+                    brotes.addNew(Double.parseDouble(brote[0]), Double.parseDouble(brote[1]), Double.parseDouble(brote[2]));
+                    for (int i = 3; i < brote.length; i++) {
+                        brotes.addonly(brotes.sizeArrays()-1, Double.parseDouble(brote[i]));
+                    }
+                }
+            }
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
     public static void writeCiudadanos(Ciudadanos ciudadanos){//escribe en el archivo de arrayList de ciudadanos los nuevos cambios
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("src\\Anses\\ciudadanos.txt"))) {
             for (int i = 0; i < ciudadanos.size(); i++) {
@@ -129,6 +147,22 @@ public class FileManagement {
         }catch(IOException e){
             System.out.println(e.getMessage());
         }
+    }
 
+    public static void writeBrotes(Brotes brotes){//escrive en el archivo de arrayList de eventos los nuevos cambios
+        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("src\\Anses\\Brotes.txt"))) {
+            for (int i = 0; i < brotes.sizeArrays(); i++) {
+                for (int j = 0; j < brotes.sizeArray(i); j++) {
+                    if (j == 0){
+                        bufferedWriter.write(brotes.get(i, j).toString());
+                    }else{
+                        bufferedWriter.write("," + brotes.get(i, j).toString());
+                    }
+                }
+                bufferedWriter.newLine();
+            }
+        }catch(IOException e){
+            System.out.println(e.getMessage());
+        }
     }
 }

@@ -1,4 +1,5 @@
 package Constructores;
+import ArrayLists.Brotes;
 import ArrayLists.Ciudadanos;
 import ArrayLists.Evento;
 import ArrayLists.Juntadas;
@@ -62,39 +63,7 @@ public class Ciudadano {
             sintomas.add(evento.get(a));
         }
     }
-    public void covid(Juntadas juntadas, Ciudadanos ciudadanos){// Si el size de la lista de sintomas del ciudadano es mayor o igual a 2, el ciudadano tiene covid
-        if (sintomas.size() >= 2){
-            coronavirus = true;
-            Calendar calendar = Calendar.getInstance();
-            Integer dia = calendar.get(Calendar.DATE);
-            Integer mes = calendar.get(Calendar.MONTH) + 1;
-            try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("src\\Anses\\CovidCiud.txt"))) {
-                bufferedWriter.write(CUIL.toString() + "/" + dia.toString() + "/" + mes.toString());
-                bufferedWriter.newLine();
-            }catch(IOException e){
-                System.out.println(e.getMessage());
-            }
-            for (int i = 0; i < juntadas.size(); i++) {
-                if (telefono.equals(juntadas.get(i).getMiTelefono())){
-                    for (int j = 0; j < ciudadanos.size(); j++) {
-                        if (ciudadanos.get(j).telefono.equals(juntadas.get(i).getTelefono())){
-                            advetir(ciudadanos.get(j));
-                        }
-                    }
-                }if (telefono.equals(juntadas.get(i).getTelefono())){
-                    for (int j = 0; j < ciudadanos.size(); j++) {
-                        if (ciudadanos.get(j).telefono.equals(juntadas.get(i).getMiTelefono())){
-                            advetir(ciudadanos.get(j));
-                        }
-                    }
-                }
-            }
-        }else{
-            coronavirus = false;
-        }
-    }
-
-    public void covidNotificar(Juntadas juntadas, Ciudadanos ciudadanos){
+    public void covid(Juntadas juntadas, Ciudadanos ciudadanos, Brotes brotes){// Si el size de la lista de sintomas del ciudadano es mayor o igual a 2, el ciudadano tiene covid
         if (sintomas.size() >= 2){
             coronavirus = true;
             Calendar calendar = Calendar.getInstance();
@@ -105,21 +74,37 @@ public class Ciudadano {
                     for (int j = 0; j < ciudadanos.size(); j++) {
                         if (ciudadanos.get(j).telefono.equals(juntadas.get(i).getTelefono())){
                             advetir(ciudadanos.get(j));
+                            if (ciudadanos.get(j).coronavirus.equals(true) && zona.equals(ciudadanos.get(j).getZona())){
+                                for (int k = 0; k < brotes.sizeArrays(); k++) {
+                                    if (brotes.get(k, brotes.sizeArray(k)-3).equals(ciudadanos.get(j).getCUIL()) && brotes.get(k, 1)+2 >= dia){
+                                        brotes.add(k, CUIL, dia.doubleValue(), mes.doubleValue());
+                                        return;
+                                    }
+                                }
+                            }
                         }
                     }
                 }if (telefono.equals(juntadas.get(i).getTelefono())){
                     for (int j = 0; j < ciudadanos.size(); j++) {
                         if (ciudadanos.get(j).telefono.equals(juntadas.get(i).getMiTelefono())){
                             advetir(ciudadanos.get(j));
+                            if (ciudadanos.get(j).coronavirus.equals(true) && zona.equals(ciudadanos.get(j).getZona())){
+                                for (int k = 0; k < brotes.sizeArrays(); k++) {
+                                    if (brotes.get(k, brotes.sizeArray(k)-3).equals(ciudadanos.get(j).getCUIL()) && brotes.get(k, 1)+2 >= dia){
+                                        brotes.add(k, CUIL, dia.doubleValue(), mes.doubleValue());
+                                        return;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
             }
+            brotes.addNew(CUIL, dia.doubleValue(), mes.doubleValue());
         }else{
             coronavirus = false;
         }
     }
-
     public void advetir(Ciudadano ciudadano){
         Calendar calendar = Calendar.getInstance();
         Integer diaDesde = calendar.get(Calendar.DATE);
@@ -132,7 +117,6 @@ public class Ciudadano {
         }else{
             mesHasta = calendar.get(Calendar.MONTH) + 1;
         }
-
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("src\\Anses\\Notificar.txt"))) {
             bufferedWriter.write(CUIL.toString() + "," + ciudadano.CUIL.toString() + "," + diaDesde.toString() + "," + mesDesde.toString() + "," + diaHasta.toString() + "," + mesHasta.toString());
             bufferedWriter.newLine();

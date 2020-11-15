@@ -1,5 +1,6 @@
 package Programa;
 
+import ArrayLists.Brotes;
 import ArrayLists.Ciudadanos;
 import ArrayLists.Juntadas;
 import Constructores.Ciudadano;
@@ -10,7 +11,7 @@ import java.io.IOException;
 import java.util.Calendar;
 
 public class Social {
-    public static void solicitudes(Ciudadano a, Juntadas juntadas, Ciudadanos ciudadanos){
+    public static void solicitudes(Ciudadano a, Juntadas juntadas, Ciudadanos ciudadanos, Brotes brotes){
         for (int i = 0; i < juntadas.size(); i++) {
             if (a.getTelefono().equals(juntadas.get(i).getTelefono()) && juntadas.get(i).getVisto().equals(false)){
                 System.out.println("Usted se ha juntado con la persona " + juntadas.get(i).getMiTelefono() + " A partir del dia " + juntadas.get(i).getFechaDesde() + " hasta el " + juntadas.get(i).getFechaHasta() + "?");
@@ -20,13 +21,6 @@ public class Social {
                     case 1:
                         juntadas.get(i).confirmado = true;
                         juntadas.get(i).visto = true;
-                        a.covidNotificar(juntadas, ciudadanos);
-                        for (int j = 0; j < ciudadanos.size(); j++) {
-                            if(juntadas.get(i).getMiTelefono().equals(ciudadanos.get(j).getTelefono())){
-                                ciudadanos.get(j).covidNotificar(juntadas, ciudadanos);
-                            }
-                        }
-
                         break;
                     case 2:
                         for (int j = 0; j < ciudadanos.size(); j++) {
@@ -54,9 +48,9 @@ public class Social {
                 String[] adv = line.split(",");
                 if (ciudadano.CUIL.equals(Double.parseDouble(adv[1]))){
                     if (dia <= Integer.parseInt(adv[4])){
-                        System.out.println("El ciudadano " + adv[0] + " con el que se junto tiene coronavirus");
+                        System.out.println("El ciudadano " + adv[0] + " con el que se junto tuvo coronavirus.");
                     }if (dia > Integer.parseInt(adv[4]) && mes < Integer.parseInt(adv[5])){
-                        System.out.println("El ciudadano " + adv[0] + " con el que se junto tiene coronavirus");
+                        System.out.println("El ciudadano " + adv[0] + " con el que se junto tuvo coronavirus.");
                     }else{
 
                     }

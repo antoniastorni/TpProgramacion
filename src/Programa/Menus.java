@@ -1,24 +1,21 @@
 package Programa;
 
-import ArrayLists.Administradores;
-import ArrayLists.Ciudadanos;
-import ArrayLists.Evento;
-import ArrayLists.Juntadas;
+import ArrayLists.*;
 import Constructores.Administrador;
 import Constructores.Ciudadano;
 import Programa.FileManagement;
 
 public class Menus {
-    public static void menuCiudadanos(Ciudadano a, Ciudadanos ciudadanos, Evento eventos, Juntadas juntadas){
+    public static void menuCiudadanos(Ciudadano a, Ciudadanos ciudadanos, Evento eventos, Juntadas juntadas, Brotes brotes){
         //Inicia el menu de ciudadanos con sus opciones
         if (a.bloqueado >= 5){
             System.out.println("Usted esta bloqueado");
             return;
         }
-        Social.solicitudes(a, juntadas, ciudadanos);
+        Social.solicitudes(a, juntadas, ciudadanos, brotes);
         Social.notificacion(a);
         while(true){
-            System.out.println("1 Reportar sintomas\n2 Remover sintoma\n3 Reportar juntada\n4 Sintomas comunes de tu zona\n5 Salir");
+            System.out.println("1 Reportar sintomas\n2 Remover sintoma\n3 Reportar juntada reciente\n4 Sintomas comunes de tu zona\n5 Salir");
             int b = Scanner.getInt("Seleccione el numero de su respuesta: ");
             switch (b) {
                 case 1:
@@ -28,7 +25,7 @@ public class Menus {
                     if (a.sintomas.size() >= 2){
                         System.out.println("!usted tiene covid¡");
                     }if (a.sintomas.size() == 2){
-                        a.covid(juntadas, ciudadanos);
+                        a.covid(juntadas, ciudadanos, brotes);
                     }
                     break;
                 case 2:
@@ -39,7 +36,7 @@ public class Menus {
                     a.remove(remove);
                     if (a.sintomas.size() <= 1){
                         System.out.println("usted no tiene covid");
-                        a.covid(juntadas, ciudadanos);
+                        a.covid(juntadas, ciudadanos, brotes);
                     }
                     break;
                 case 3:
@@ -57,8 +54,18 @@ public class Menus {
                     EventosZona.EventosRanking(ciudadanos, a.zona);
                     break;
                 case 5:
+                    for (int k = 0; k < brotes.sizeArrays(); k++) {
+                        for (int j = 0; j < brotes.sizeArray(k); j++) {
+                            if (j == 0) {
+                                System.out.println((brotes.get(k, j).toString()));
+                            } else {
+                                System.out.println(("," + brotes.get(k, j).toString()));
+                            }
+                        }
+                    }
                     FileManagement.writeJuntadas(juntadas);
                     FileManagement.writeCiudadanos(ciudadanos);
+                    FileManagement.writeBrotes(brotes);
                     System.exit(0);
                 default:
                     System.out.println("Ingrese un valor existente");
