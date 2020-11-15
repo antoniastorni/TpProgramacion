@@ -10,7 +10,7 @@ public class Menus {
         //Inicia el menu de ciudadanos con sus opciones
         if (a.bloqueado >= 5){
             System.out.println("Usted esta bloqueado");
-            return;
+            System.exit(0);
         }
         Social.solicitudes(a, juntadas, ciudadanos, brotes);
         Social.notificacion(a, notificaciones);
