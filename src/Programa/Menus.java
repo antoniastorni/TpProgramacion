@@ -42,9 +42,9 @@ public class Menus {
                 case 3:
                     Double Telefono = Scanner.getDouble("Ingrese el Telefono de la persona con la que se junto: ");
                     Integer diaDesde = Scanner.getInt("desde que dia?: ");
-                    Integer mesDesde = Scanner.getInt("desde que mes? (Ingrese numero): ");
+                    Integer mesDesde = Scanner.getInt("que mes? (Ingrese numero): ");
                     Integer diaHasta = Scanner.getInt("Hasta que dia? (Ingrese Dia/Mes/Año): ");
-                    Integer mesHasta = Scanner.getInt("desde que mes? (Ingrese numero): ");
+                    Integer mesHasta = Scanner.getInt("que mes? (Ingrese numero): ");
                     String juntadaDesde = diaDesde + "/" + mesDesde;
                     String juntadaHasta = diaHasta + "/" + mesHasta;
                     a.juntada(ciudadanos, juntadaDesde, juntadaHasta, Telefono);
@@ -54,15 +54,6 @@ public class Menus {
                     EventosZona.EventosRanking(ciudadanos, a.zona);
                     break;
                 case 5:
-                    for (int k = 0; k < brotes.sizeArrays(); k++) {
-                        for (int j = 0; j < brotes.sizeArray(k); j++) {
-                            if (j == 0) {
-                                System.out.println((brotes.get(k, j).toString()));
-                            } else {
-                                System.out.println(("," + brotes.get(k, j).toString()));
-                            }
-                        }
-                    }
                     FileManagement.writeJuntadas(juntadas);
                     FileManagement.writeCiudadanos(ciudadanos);
                     FileManagement.writeBrotes(brotes);

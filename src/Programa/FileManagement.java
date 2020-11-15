@@ -6,16 +6,14 @@ import Constructores.Ciudadano;
 import Constructores.Juntada;
 
 import java.io.*;
-import java.util.Calendar;
 
 public class FileManagement {
     public static void generateCiudadanos(Ciudadanos ciudadanos){//genera el arrayList de ciudadanos a partir de los archivos
         String line;
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\Anses\\ciudadanos.txt"));){
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\Anses\\ciudadanos.txt"))){
             while ((line = bufferedReader.readLine()) != null) {
                 String[] gente = line.split(",");
                 ciudadanos.add(new Ciudadano((Double.parseDouble(gente[0])),(Double.parseDouble(gente[1])),(gente[2]), (Integer.parseInt(gente[3])), Boolean.parseBoolean(gente[4])));
-
             }
         }catch (IOException e){
             System.out.println(e.getMessage());
@@ -31,7 +29,6 @@ public class FileManagement {
                         }
                     }
                 }
-
             }
         }catch (IOException e){
             System.out.println(e.getMessage());
@@ -49,7 +46,7 @@ public class FileManagement {
         }
     }
     public static void generateEventos(Evento eventos){//genera el arrayList de eventos a partir de los archivos
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\Anses\\eventos.txt"));){
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\Anses\\eventos.txt"))){
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 eventos.add(line);
@@ -60,7 +57,7 @@ public class FileManagement {
     }
     public static void generateJuntadas(Juntadas juntadas){//genera el arrayList de ciudadanos a partir de los archivos
         String line;
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\Anses\\JuntadasConfirm.txt"));){
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\Anses\\JuntadasConfirm.txt"))){
             while ((line = bufferedReader.readLine()) != null) {
                 String[] juntada = line.split(",");
                 juntadas.add(new Juntada((Double.parseDouble(juntada[0])),(Double.parseDouble(juntada[1])),(juntada[2]), (juntada[3]), (Boolean.parseBoolean(juntada[4])), (Boolean.parseBoolean(juntada[5]))));
@@ -69,10 +66,9 @@ public class FileManagement {
             System.out.println(e.getMessage());
         }
     }
-
     public static void generateBrotes(Brotes brotes){//genera el arrayList de administradores a partir de los archivos
         String line;
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\Anses\\Brotes.txt"));){
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\Anses\\Brotes.txt"))){
             while ((line = bufferedReader.readLine()) != null) {
                 String[] brote = line.split(",");
                 if (brote.length == 3){
@@ -88,7 +84,6 @@ public class FileManagement {
             System.out.println(e.getMessage());
         }
     }
-
     public static void writeCiudadanos(Ciudadanos ciudadanos){//escribe en el archivo de arrayList de ciudadanos los nuevos cambios
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("src\\Anses\\ciudadanos.txt"))) {
             for (int i = 0; i < ciudadanos.size(); i++) {
@@ -129,7 +124,6 @@ public class FileManagement {
         }catch(IOException e){
             System.out.println(e.getMessage());
         }
-
     }
     public static void writeJuntadas(Juntadas juntadas){//escribe en el archivo de arrayList de ciudadanos los nuevos cambios
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("src\\Anses\\JuntadasConfirm.txt"))) {

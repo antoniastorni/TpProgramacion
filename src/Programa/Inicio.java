@@ -10,9 +10,9 @@ public class Inicio {
             int b = Scanner.getInt("Seleccione el numero de su respuesta: ");
             switch (b) {
                 case 1:
-                    Double a = Scanner.getDouble("Ingrese su CUIL: ");
-                    Double c = Scanner.getDouble("Ingrese su Telefono: ");
-                    buscarUsuario(a, c, ciudadanos, administradores, eventos, juntadas, brotes);
+                    Double cuil = Scanner.getDouble("Ingrese su CUIL: ");
+                    Double telefono = Scanner.getDouble("Ingrese su Telefono: ");
+                    buscarUsuario(cuil, telefono, ciudadanos, administradores, eventos, juntadas, brotes);
                     System.exit(0);
                     break;
                 case 2:
