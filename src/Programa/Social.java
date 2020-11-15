@@ -3,11 +3,8 @@ package Programa;
 import ArrayLists.Brotes;
 import ArrayLists.Ciudadanos;
 import ArrayLists.Juntadas;
+import ArrayLists.NotificacionesTotales;
 import Constructores.Ciudadano;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Calendar;
 
 public class Social {
@@ -38,26 +35,21 @@ public class Social {
         }
     }
 
-    public static void notificacion(Ciudadano ciudadano){
+    public static void notificacion(Ciudadano ciudadano, NotificacionesTotales notificaciones){
         Calendar calendar = Calendar.getInstance();
         Integer dia = calendar.get(Calendar.DATE);
         Integer mes = calendar.get(Calendar.MONTH) + 1;
         String line;
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\Anses\\Notificar.txt"));){
-            while ((line = bufferedReader.readLine()) != null) {
-                String[] adv = line.split(",");
-                if (ciudadano.CUIL.equals(Double.parseDouble(adv[1]))){
-                    if (dia <= Integer.parseInt(adv[4])){
-                        System.out.println("El ciudadano " + adv[0] + " con el que se junto tuvo coronavirus.");
-                    }if (dia > Integer.parseInt(adv[4]) && mes < Integer.parseInt(adv[5])){
-                        System.out.println("El ciudadano " + adv[0] + " con el que se junto tuvo coronavirus.");
-                    }else{
+        for (int i = 0; i < notificaciones.size(); i++) {
+            if (ciudadano.CUIL.equals(notificaciones.get(i).getCuilAdvertir())){
+                if (dia <= notificaciones.get(i).getDiaHasta()){
+                    System.out.println("El ciudadano " + notificaciones.get(i).getCuilcovid() + " con el que se junto tuvo coronavirus.");
+                }if (dia > notificaciones.get(i).getDiaHasta() && mes < notificaciones.get(i).getMesHasta()){
+                    System.out.println("El ciudadano " + notificaciones.get(i).getCuilcovid() + " con el que se junto tuvo coronavirus.");
+                }else{
 
-                    }
                 }
             }
-        }catch (IOException e){
-            System.out.println(e.getMessage());
         }
     }
 }

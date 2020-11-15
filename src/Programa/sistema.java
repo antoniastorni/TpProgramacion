@@ -9,12 +9,14 @@ public class sistema {
         Evento eventos = new Evento();
         Juntadas juntadas = new Juntadas();
         Brotes brotes = new Brotes();
+        NotificacionesTotales notificaciones = new NotificacionesTotales();
         FileManagement.generateCiudadanos(ciudadanos);
         FileManagement.generateAdministradores(administradores);
         FileManagement.generateEventos(eventos);
         FileManagement.generateJuntadas(juntadas);
         FileManagement.generateBrotes(brotes);
-        Inicio.menuInicial(ciudadanos, administradores, eventos, juntadas, brotes);
+        FileManagement.generateNotificaciones(notificaciones);
+        Inicio.menuInicial(ciudadanos, administradores, eventos, juntadas, brotes, notificaciones);
 
     }
 

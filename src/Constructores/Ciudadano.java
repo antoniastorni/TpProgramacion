@@ -1,8 +1,5 @@
 package Constructores;
-import ArrayLists.Brotes;
-import ArrayLists.Ciudadanos;
-import ArrayLists.Evento;
-import ArrayLists.Juntadas;
+import ArrayLists.*;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -63,7 +60,7 @@ public class Ciudadano {
             sintomas.add(evento.get(a));
         }
     }
-    public void covid(Juntadas juntadas, Ciudadanos ciudadanos, Brotes brotes){// Si el size de la lista de sintomas del ciudadano es mayor o igual a 2, el ciudadano tiene covid
+    public void covid(Juntadas juntadas, Ciudadanos ciudadanos, Brotes brotes, NotificacionesTotales notificaciones){// Si el size de la lista de sintomas del ciudadano es mayor o igual a 2, el ciudadano tiene covid
         if (sintomas.size() >= 2){
             coronavirus = true;
             Calendar calendar = Calendar.getInstance();
@@ -73,7 +70,7 @@ public class Ciudadano {
                 if (telefono.equals(juntadas.get(i).getMiTelefono())){
                     for (int j = 0; j < ciudadanos.size(); j++) {
                         if (ciudadanos.get(j).telefono.equals(juntadas.get(i).getTelefono())){
-                            advetir(ciudadanos.get(j));
+                            advetir(ciudadanos.get(j), notificaciones);
                             if (ciudadanos.get(j).coronavirus.equals(true) && zona.equals(ciudadanos.get(j).getZona())){
                                 for (int k = 0; k < brotes.sizeArrays(); k++) {
                                     if (brotes.get(k, brotes.sizeArray(k)-3).equals(ciudadanos.get(j).getCUIL()) && brotes.get(k, 1)+2 >= dia){
@@ -87,7 +84,7 @@ public class Ciudadano {
                 }if (telefono.equals(juntadas.get(i).getTelefono())){
                     for (int j = 0; j < ciudadanos.size(); j++) {
                         if (ciudadanos.get(j).telefono.equals(juntadas.get(i).getMiTelefono())){
-                            advetir(ciudadanos.get(j));
+                            advetir(ciudadanos.get(j), notificaciones);
                             if (ciudadanos.get(j).coronavirus.equals(true) && zona.equals(ciudadanos.get(j).getZona())){
                                 for (int k = 0; k < brotes.sizeArrays(); k++) {
                                     if (brotes.get(k, brotes.sizeArray(k)-3).equals(ciudadanos.get(j).getCUIL()) && brotes.get(k, 1)+2 >= dia){
@@ -105,7 +102,7 @@ public class Ciudadano {
             coronavirus = false;
         }
     }
-    public void advetir(Ciudadano ciudadano){
+    public void advetir(Ciudadano ciudadano, NotificacionesTotales notificaciones){
         Calendar calendar = Calendar.getInstance();
         Integer diaDesde = calendar.get(Calendar.DATE);
         Integer mesDesde = calendar.get(Calendar.MONTH) + 1;
@@ -117,12 +114,7 @@ public class Ciudadano {
         }else{
             mesHasta = calendar.get(Calendar.MONTH) + 1;
         }
-        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("src\\Anses\\Notificar.txt"))) {
-            bufferedWriter.write(CUIL.toString() + "," + ciudadano.CUIL.toString() + "," + diaDesde.toString() + "," + mesDesde.toString() + "," + diaHasta.toString() + "," + mesHasta.toString());
-            bufferedWriter.newLine();
-        }catch(IOException e){
-            System.out.println(e.getMessage());
-        }
+        notificaciones.add(new Notificaciones(CUIL, ciudadano.CUIL, diaDesde, mesDesde, diaHasta, mesHasta));
     }
     public void juntada(Ciudadanos gente, String diaDesde, String diaHasta, Double Telefono){// agrega una juntada en el archivo juntadas
         for (int i = 0; i < gente.size(); i++) {

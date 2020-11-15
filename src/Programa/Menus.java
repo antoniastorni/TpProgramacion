@@ -6,14 +6,14 @@ import Constructores.Ciudadano;
 import Programa.FileManagement;
 
 public class Menus {
-    public static void menuCiudadanos(Ciudadano a, Ciudadanos ciudadanos, Evento eventos, Juntadas juntadas, Brotes brotes){
+    public static void menuCiudadanos(Ciudadano a, Ciudadanos ciudadanos, Evento eventos, Juntadas juntadas, Brotes brotes, NotificacionesTotales notificaciones){
         //Inicia el menu de ciudadanos con sus opciones
         if (a.bloqueado >= 5){
             System.out.println("Usted esta bloqueado");
             return;
         }
         Social.solicitudes(a, juntadas, ciudadanos, brotes);
-        Social.notificacion(a);
+        Social.notificacion(a, notificaciones);
         while(true){
             System.out.println("1 Reportar sintomas\n2 Remover sintoma\n3 Reportar juntada reciente\n4 Sintomas comunes de tu zona\n5 Salir");
             int b = Scanner.getInt("Seleccione el numero de su respuesta: ");
@@ -25,7 +25,7 @@ public class Menus {
                     if (a.sintomas.size() >= 2){
                         System.out.println("!usted tiene covid¡");
                     }if (a.sintomas.size() == 2){
-                        a.covid(juntadas, ciudadanos, brotes);
+                        a.covid(juntadas, ciudadanos, brotes, notificaciones);
                     }
                     break;
                 case 2:
@@ -36,7 +36,7 @@ public class Menus {
                     a.remove(remove);
                     if (a.sintomas.size() <= 1){
                         System.out.println("usted no tiene covid");
-                        a.covid(juntadas, ciudadanos, brotes);
+                        a.covid(juntadas, ciudadanos, brotes, notificaciones);
                     }
                     break;
                 case 3:
@@ -57,6 +57,7 @@ public class Menus {
                     FileManagement.writeJuntadas(juntadas);
                     FileManagement.writeCiudadanos(ciudadanos);
                     FileManagement.writeBrotes(brotes);
+                    FileManagement.writeNotificaciones(notificaciones);
                     System.exit(0);
                 default:
                     System.out.println("Ingrese un valor existente");

@@ -4,6 +4,7 @@ import ArrayLists.*;
 import Constructores.Administrador;
 import Constructores.Ciudadano;
 import Constructores.Juntada;
+import Constructores.Notificaciones;
 
 import java.io.*;
 
@@ -84,6 +85,18 @@ public class FileManagement {
             System.out.println(e.getMessage());
         }
     }
+    public static void generateNotificaciones(NotificacionesTotales notificaciones){//genera el arrayList de ciudadanos a partir de los archivos
+        String line;
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\Anses\\Notificar.txt"))){
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] notificacion = line.split(",");
+                notificaciones.add(new Notificaciones((Double.parseDouble(notificacion[0])), (Double.parseDouble(notificacion[1])), (Integer.parseInt(notificacion[2])), (Integer.parseInt(notificacion[3])), (Integer.parseInt(notificacion[4])), (Integer.parseInt(notificacion[5]))));
+            }
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
     public static void writeCiudadanos(Ciudadanos ciudadanos){//escribe en el archivo de arrayList de ciudadanos los nuevos cambios
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("src\\Anses\\ciudadanos.txt"))) {
             for (int i = 0; i < ciudadanos.size(); i++) {
@@ -153,6 +166,17 @@ public class FileManagement {
                         bufferedWriter.write("," + brotes.get(i, j).toString());
                     }
                 }
+                bufferedWriter.newLine();
+            }
+        }catch(IOException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void writeNotificaciones(NotificacionesTotales notificaciones){//escribe en el archivo de arrayList de ciudadanos los nuevos cambios
+        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("src\\Anses\\Notificar.txt"))) {
+            for (int i = 0; i < notificaciones.size(); i++) {
+                bufferedWriter.write(notificaciones.get(i).getCuilcovid().toString() + "," + notificaciones.get(i).getCuilAdvertir().toString() + "," + notificaciones.get(i).getDiaDesde().toString() + "," + notificaciones.get(i).getMesDesde().toString() + "," + notificaciones.get(i).getDiaHasta().toString() + "," + notificaciones.get(i).getMesHasta().toString());
                 bufferedWriter.newLine();
             }
         }catch(IOException e){
