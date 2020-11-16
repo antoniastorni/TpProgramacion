@@ -1,4 +1,4 @@
-1.0,Dolor de cabeza,Tos
+1.0
 2.0
 3.0
 4.0

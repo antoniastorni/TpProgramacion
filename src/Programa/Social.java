@@ -8,7 +8,7 @@ import Constructores.Ciudadano;
 import java.util.Calendar;
 
 public class Social {
-    public static void solicitudes(Ciudadano a, Juntadas juntadas, Ciudadanos ciudadanos, Brotes brotes){
+    public static void solicitudes(Ciudadano a, Juntadas juntadas, Ciudadanos ciudadanos, NotificacionesTotales notificaciones){
         for (int i = 0; i < juntadas.size(); i++) {
             if (a.getTelefono().equals(juntadas.get(i).getTelefono()) && juntadas.get(i).getVisto().equals(false)){
                 System.out.println("Usted se ha juntado con la persona " + juntadas.get(i).getMiTelefono() + " A partir del dia " + juntadas.get(i).getFechaDesde() + " hasta el " + juntadas.get(i).getFechaHasta() + "?");
@@ -18,6 +18,15 @@ public class Social {
                     case 1:
                         juntadas.get(i).confirmado = true;
                         juntadas.get(i).visto = true;
+                        for (int j = 0; j < ciudadanos.size(); j++) {
+                            if(juntadas.get(i).getMiTelefono().equals(ciudadanos.get(j).getTelefono())){
+                                if (ciudadanos.get(j).coronavirus.equals(true)){
+                                    ciudadanos.get(i).advetir(a, notificaciones);
+                                }if (a.coronavirus.equals(true)){
+                                    a.advetir(ciudadanos.get(i), notificaciones);
+                                }
+                            }
+                        }
                         break;
                     case 2:
                         for (int j = 0; j < ciudadanos.size(); j++) {

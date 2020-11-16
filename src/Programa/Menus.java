@@ -12,7 +12,7 @@ public class Menus {
             System.out.println("Usted esta bloqueado");
             System.exit(0);
         }
-        Social.solicitudes(a, juntadas, ciudadanos, brotes);
+        Social.solicitudes(a, juntadas, ciudadanos, notificaciones);
         Social.notificacion(a, notificaciones);
         while(true){
             System.out.println("1 Reportar sintomas\n2 Remover sintoma\n3 Reportar juntada reciente\n4 Sintomas comunes de tu zona\n5 Salir");
