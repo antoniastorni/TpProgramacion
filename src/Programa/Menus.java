@@ -78,7 +78,7 @@ public class Menus {
                 case 2:
                     for (int i = 0; i < ciudadanos.size(); i++) {
                         if (ciudadanos.get(i).bloqueado >= 5){
-                            System.out.println("Cuil: " + ciudadanos.get(i).CUIL + ", Telefono:" + ciudadanos.get(i).telefono + ", Zona: " + ciudadanos.get(i));
+                            System.out.println("Cuil: " + ciudadanos.get(i).CUIL + ", Telefono:" + ciudadanos.get(i).telefono + ", Zona: " + ciudadanos.get(i).zona);
                         }
                     }
                     Double cuil2 = Scanner.getDouble("Ingrese el cuil de el ciudadano: ");
