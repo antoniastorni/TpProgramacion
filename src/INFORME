@@ -1,0 +1,30 @@
+El programa tiene como objetivo identificar brotes en las distintas zonas y mostrar las estadísticas de los síntomas
+más comunes por zona, para poder monitorear de manera más eficiente la situación.
+El programa se inicia y se le presentan al usuario dos opciones, iniciar sesión desde una cuenta ya existente o crear
+una cuenta nueva.
+Se inicia sesión con el cuil y número de teléfono, estos datos se buscan en las listas de administrador y ciudadano,
+en el caso de encontrarse en alguna de las dos, se le presenta el menú respectivo. En el caso de los administradores
+existe un administrador que ya fue creado de base para poder realizar las operaciones básicas y pueda iniciarse el programa.
+Los administradores tienen las opciones de desbloquear ciudadanos, transformar un ciudadano en administrador, agregar y
+remover eventos. Los eventos agregados son guardados en una lista y toda la información es guardada en un archivo de texto.
+Una vez iniciada la sesión, los ciudadanos tienen las opciones de reportar o remover eventos además de reportar una juntada
+y consultar los síntomas más comunes en su zona. Para reportar o remover algún síntoma, a los ciudadanos se les muestra la
+lista de síntomas agregados por los administradores con la opción de elegir aquellos que quieran reportar o dar de baja.
+En caso de que un ciudadano tenga dos o más síntomas se considera al ciudadano como coronavirus positivo, advirtiendo por
+consola al ciudadano. Esta información se guarda en un archivo en cada lista de los ciudadanos registrados, junto a su
+teléfono, cuil,síntomas activos y solicitudes rechazadas.
+Para reportar una juntada se le pide el numero de telefono de la persona con la cual tuvo contacto, junto a la fecha desde
+y hasta que haya ocurrido la reunión. Una vez reportada la juntada se le pregunta al otro ciudadano al iniciar sesión si
+tuvo contacto con el ciudadano que reportó la juntada. En caso que confirme la reunión con el ciudadano que reportó la
+reunión, se guarda esa información junto al resto de sus datos. En caso contrario, se le contará como una solicitud rechazada
+y en el caso de que el número de solicitudes rechazadas llegue a 5, el ciudadano se bloqueará automáticamente y será advertido
+al iniciar sesión. En el caso de que un ciudadano reporte una reunión con otro ciudadano y posteriormente alguno presente
+síntomas, lo que hace que el ciudadano sea positivo en coronavirus, se le notifica al otro ciudadano que la persona con la
+que se juntó en tal fecha tiene coronavirus.
+Los registros de las reuniones entre ciudadanos se guardan en un archivo especificando el cuil de ambos ciudadanos que
+confirmaron su reunión, junto a la fecha desde y hasta que ocurrió dicha reunión. Esta información queda a disposición
+de los administradores.
+Los brotes se consideran dentro de una misma zona y dentro de 48 horas, en el caso de que pasen más de esa cantidad, se
+identificará como un nuevo brote. A partir de que más de dos personas sean positivas para coronavirus, se crea una lista
+de brotes por zona, indicando la fecha desde que este inicio y se encadenan los números de cuil de las personas registradas
+con coronavirus.
